@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -30,12 +31,13 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
         setToolbar()
+        createOnBackPressedCallback()
     }
 
     private fun setToolbar() =
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.WelcomeScreenFragment -> {
+                R.id.welcomeScreenFragment -> {
                     binding.toolbar.visibility = View.GONE
                 }
                 else -> {
@@ -45,6 +47,17 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 //            setNavigationIconOnToolbar()
+        }
+
+    private fun createOnBackPressedCallback() =
+        onBackPressedDispatcher.addCallback(this) {
+            when (navController.currentDestination?.id) {
+                R.id.mainScreenFragment -> finish()
+//                R.id.MainScreenFragment-> {
+//                    navController.navigate(R.id.MainScreenFragment)
+//                }
+                else -> navController.navigateUp()
+            }
         }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

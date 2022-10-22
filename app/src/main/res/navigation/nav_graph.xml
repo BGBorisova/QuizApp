@@ -3,26 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/WelcomeScreenFragment">
+    app:startDestination="@id/welcomeScreenFragment">
 
     <fragment
-        android:id="@+id/WelcomeScreenFragment"
+        android:id="@+id/welcomeScreenFragment"
         android:name="com.example.quizapp.WelcomeScreenFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_welcome_screen">
 
         <action
             android:id="@+id/action_WelcomeScreenFragment_to_MainScreenFragment"
-            app:destination="@id/MainScreenFragment" />
+            app:destination="@id/mainScreenFragment"
+            app:enterAnim="@anim/fade_in" />
     </fragment>
     <fragment
-        android:id="@+id/MainScreenFragment"
+        android:id="@+id/mainScreenFragment"
         android:name="com.example.quizapp.MainScreenFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_main_screen">
 
         <action
             android:id="@+id/action_MainScreenFragment_to_WelcomeScreenFragment"
-            app:destination="@id/WelcomeScreenFragment" />
+            app:destination="@id/welcomeScreenFragment" />
     </fragment>
 </navigation>

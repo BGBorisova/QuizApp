@@ -1,14 +1,17 @@
 package com.example.quizapp
 
+import android.animation.Animator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.quizapp.databinding.FragmentWelcomeScreenBinding
 
-class WelcomeScreenFragment : Fragment() {
+private const val MAX_ANIM_FRAME = 100
 
+class WelcomeScreenFragment : Fragment() {
 
     private lateinit var binding: FragmentWelcomeScreenBinding
 
@@ -18,5 +21,26 @@ class WelcomeScreenFragment : Fragment() {
     ): View {
         binding = FragmentWelcomeScreenBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setLottieAnimation()
+    }
+
+    private fun setLottieAnimation() {
+        binding.lottie.setMaxFrame(MAX_ANIM_FRAME)
+        binding.lottie.addAnimatorListener(object : Animator.AnimatorListener {
+            override fun onAnimationStart(p0: Animator?) {
+            }
+
+            override fun onAnimationEnd(p0: Animator?) {
+                findNavController().navigate(R.id.action_WelcomeScreenFragment_to_MainScreenFragment)
+            }
+
+            override fun onAnimationCancel(p0: Animator?) {}
+
+            override fun onAnimationRepeat(p0: Animator?) {}
+        })
     }
 }
