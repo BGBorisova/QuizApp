@@ -21,5 +21,8 @@
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_main_screen">
 
+        <action
+            android:id="@+id/action_MainScreenFragment_to_WelcomeScreenFragment"
+            app:destination="@id/WelcomeScreenFragment" />
     </fragment>
 </navigation>
