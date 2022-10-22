@@ -1,19 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout >
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainScreenFragment">
 
         <TextView
+            android:id="@+id/txtWelcome"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textSize="160sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_giant"
+            android:text="@string/text_welcome"
+            android:textAlignment="center"
+
             android:textColor="@color/black"
-            android:text="main" />
+            android:textSize="@dimen/welcome_text_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtAppName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/no_dimens"
+            android:layout_marginTop="@dimen/margin_large"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@id/txtDescription"
+            android:textSize="@dimen/text_size_header"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/txtWelcome" />
+
+        <TextView
+            android:id="@+id/txtDescription"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/no_dimens"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginTop="@dimen/margin_large"
+            android:gravity="center"
+            android:text="@string/text_description"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/btn8class"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtAppName" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn8class"
+            android:layout_width="@dimen/no_dimens"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/eight_class"
+            android:textSize="16sp"
+            android:layout_marginBottom="@dimen/margin_large"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn9class"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtDescription" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn9class"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/ninth_class"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/btn8class"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn8class"
+            app:layout_constraintTop_toBottomOf="@id/txtDescription" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
