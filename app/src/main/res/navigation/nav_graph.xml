@@ -3,26 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/welcomeScreenFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.example.quizapp.FirstFragment"
+        android:id="@+id/welcomeScreenFragment"
+        android:name="com.example.quizapp.WelcomeScreenFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/fragment_welcome_screen">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_WelcomeScreenFragment_to_MainScreenFragment"
+            app:destination="@id/mainScreenFragment"
+            app:enterAnim="@anim/fade_in" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.quizapp.SecondFragment"
+        android:id="@+id/mainScreenFragment"
+        android:name="com.example.quizapp.MainScreenFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/fragment_main_screen">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_MainScreenFragment_to_WelcomeScreenFragment"
+            app:destination="@id/welcomeScreenFragment" />
     </fragment>
 </navigation>
