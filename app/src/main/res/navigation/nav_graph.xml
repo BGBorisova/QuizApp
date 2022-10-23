@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/welcomeScreenFragment"
-        android:name="com.example.quizapp.WelcomeScreenFragment"
+        android:name="com.example.quizapp.fragment.WelcomeScreenFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_welcome_screen">
 
@@ -18,12 +18,35 @@
     </fragment>
     <fragment
         android:id="@+id/mainScreenFragment"
-        android:name="com.example.quizapp.MainScreenFragment"
+        android:name="com.example.quizapp.fragment.MainScreenFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_main_screen">
 
         <action
             android:id="@+id/action_MainScreenFragment_to_WelcomeScreenFragment"
             app:destination="@id/welcomeScreenFragment" />
+        <action
+            android:id="@+id/action_mainScreenFragment_to_eightClassScreenFragment"
+            app:destination="@id/eightClassScreenFragment" />
+        <action
+            android:id="@+id/action_mainScreenFragment_to_ninthClassScreenFragment"
+            app:destination="@id/ninthClassScreenFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/eightClassScreenFragment"
+        android:name="com.example.quizapp.fragment.EightClassExamFragment"
+        android:label="8 клас"
+        tools:layout="@layout/fragment_eight_class_exam">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/ninthClassScreenFragment"
+        android:name="com.example.quizapp.fragment.NinthClassExamFragment"
+        android:label="9 клас"
+        tools:layout="@layout/fragment_ninth_class_exam">
+
+    </fragment>
+
 </navigation>

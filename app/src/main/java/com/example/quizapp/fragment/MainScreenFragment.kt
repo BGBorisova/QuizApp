@@ -1,4 +1,4 @@
-package com.example.quizapp
+package com.example.quizapp.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,13 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.quizapp.R
 import com.example.quizapp.databinding.FragmentMainScreenBinding
 
 
 class MainScreenFragment : Fragment() {
 
     private lateinit var binding: FragmentMainScreenBinding
-    
+    private var isEightClassEnabled = false
+    private var isNinthClassEnabled = false
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,10 +29,13 @@ class MainScreenFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         onEightClassButtonClicked()
         onNinthClassButtonClicked()
+        onContinueButtonClicked()
     }
 
     private fun onEightClassButtonClicked() =
         binding.btn8class.setOnClickListener {
+            isEightClassEnabled = true
+            isNinthClassEnabled = false
             enabledContinueButton(true)
             enabledEightClass(true)
             enabledNinthClass(false)
@@ -36,10 +43,23 @@ class MainScreenFragment : Fragment() {
 
     private fun onNinthClassButtonClicked() =
         binding.btn9class.setOnClickListener {
+            isEightClassEnabled = false
+            isNinthClassEnabled = true
             enabledContinueButton(true)
             enabledNinthClass(true)
             enabledEightClass(false)
         }
+
+    private fun onContinueButtonClicked() {
+        binding.btnContinue.setOnClickListener {
+            if (isEightClassEnabled) {
+                findNavController().navigate(R.id.action_mainScreenFragment_to_eightClassScreenFragment)
+            }
+            if (isNinthClassEnabled) {
+                findNavController().navigate(R.id.action_mainScreenFragment_to_ninthClassScreenFragment)
+            }
+        }
+    }
 
     private fun enabledEightClass(isEnabled: Boolean) =
         if (isEnabled) {
