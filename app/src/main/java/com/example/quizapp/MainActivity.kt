@@ -40,6 +40,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.welcomeScreenFragment -> {
                     binding.toolbar.visibility = View.GONE
                 }
+                R.id.mainScreenFragment -> {
+                    binding.toolbar.visibility = View.GONE
+                }
                 else -> {
                     binding.toolbar.visibility = View.VISIBLE
 //                    binding.navigationView.visibility = View.VISIBLE
@@ -61,7 +64,6 @@ class MainActivity : AppCompatActivity() {
         }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
