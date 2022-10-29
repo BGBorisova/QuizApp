@@ -4,13 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quizapp.Constants.EIGHT_CLASS
-import com.example.quizapp.Constants.NINTH_CLASS
 import com.example.quizapp.data.Module
 import com.example.quizapp.databinding.FragmentModuleScreenBinding
 import com.example.quizapp.ui.activity.adapter.ItemListener
@@ -20,6 +18,7 @@ class ModuleScreenFragment : Fragment(), ItemListener {
 
     private lateinit var binding: FragmentModuleScreenBinding
     private val args: ModuleScreenFragmentArgs by navArgs()
+    private val backArgs: ModuleScreenFragmentArgs by navArgs()
     private var adapter = ModuleAdapter(this)
     private var isEightClass: Boolean? = null
 
@@ -37,13 +36,11 @@ class ModuleScreenFragment : Fragment(), ItemListener {
     }
 
     private fun openCorrectScreen() {
-        isEightClass = args.classLevel.equals(EIGHT_CLASS)
-        if (isEightClass == true) {
-            binding.txtScreenTitle.text = "8 клас"
-            Toast.makeText(requireContext(), EIGHT_CLASS, Toast.LENGTH_SHORT).show()
-        } else {
-            binding.txtScreenTitle.text = "9 клас"
-            Toast.makeText(requireContext(), NINTH_CLASS, Toast.LENGTH_SHORT).show()
+        isEightClass =
+            args.classLevel.equals(EIGHT_CLASS) || (backArgs.backFromTest.equals(EIGHT_CLASS))
+        when (isEightClass) {
+            true -> binding.txtScreenTitle.text = "8 клас"
+            else -> binding.txtScreenTitle.text = "9 клас"
         }
     }
 
@@ -76,12 +73,10 @@ class ModuleScreenFragment : Fragment(), ItemListener {
             )
         }
 
-    override fun onItemSelected(item: Module) {
-        findNavController().navigate(
-            ModuleScreenFragmentDirections.actionModuleScreenFragmentToTestScreenFragment(
-                item.moduleId
-            )
+    override fun onItemSelected(item: Module) = findNavController().navigate(
+        ModuleScreenFragmentDirections.actionModuleScreenFragmentToTestScreenFragment(
+            item.moduleId
         )
-    }
+    )
 }
 

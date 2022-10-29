@@ -3,7 +3,6 @@ package com.example.quizapp.ui.activity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -28,35 +27,14 @@ class MainActivity : AppCompatActivity() {
         navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
-        setToolbar()
         createOnBackPressedCallback()
     }
-
-    private fun setToolbar() =
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            when (destination.id) {
-                R.id.welcomeScreenFragment -> {
-                    binding.toolbar.visibility = View.GONE
-                }
-                R.id.mainScreenFragment -> {
-                    binding.toolbar.visibility = View.GONE
-                }
-                R.id.moduleScreenFragment -> {
-                    binding.toolbar.visibility = View.GONE
-                }
-                else -> {
-                    binding.toolbar.visibility = View.VISIBLE
-                    binding.toolbar.navigationIcon = null
-                }
-            }
-        }
 
     private fun createOnBackPressedCallback() =
         onBackPressedDispatcher.addCallback(this) {
             when (navController.currentDestination?.id) {
                 R.id.mainScreenFragment -> finish()
-                R.id.moduleScreenFragment,
-                -> {
+                R.id.moduleScreenFragment -> {
                     navController.navigate(R.id.mainScreenFragment)
                 }
                 else -> navController.navigateUp()

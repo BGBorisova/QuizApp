@@ -15,7 +15,7 @@
             android:layout_marginBottom="@dimen/margin_large"
             android:backgroundTint="@color/light_orange"
             android:clickable="true"
-            android:enabled="false"
+            android:enabled="true"
             android:focusable="true"
             android:paddingVertical="10dp"
             android:textAlignment="center"

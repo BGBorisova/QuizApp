@@ -40,7 +40,7 @@ class ModuleViewHolder(
 
     fun bind(module: Module) {
         binding.btnModule.text = module.title
-        binding.root.setOnClickListener {
+        binding.btnModule.setOnClickListener {
             itemListener.onItemSelected(module)
         }
     }

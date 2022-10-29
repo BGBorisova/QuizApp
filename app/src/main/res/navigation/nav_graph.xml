@@ -35,15 +35,20 @@
         android:name="com.example.quizapp.ui.activity.fragment.ModuleScreenFragment"
         android:label="8 клас"
         tools:layout="@layout/fragment_module_screen">
+        <action
+            android:id="@+id/action_moduleScreenFragment_to_testScreenFragment"
+            app:destination="@id/testScreenFragment" />
 
         <argument
             android:name="classLevel"
             android:defaultValue="@null"
             app:argType="string"
             app:nullable="true" />
-        <action
-            android:id="@+id/action_moduleScreenFragment_to_testScreenFragment"
-            app:destination="@id/testScreenFragment" />
+
+        <argument
+            android:name="backFromTest"
+            android:defaultValue="0"
+            app:argType="integer" />
     </fragment>
 
     <fragment
@@ -55,8 +60,10 @@
         <argument
             android:name="test"
             android:defaultValue="0"
-            app:argType="integer"
-           />
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_testScreenFragment_to_moduleScreenFragment"
+            app:destination="@id/moduleScreenFragment" />
     </fragment>
 
 </navigation>
