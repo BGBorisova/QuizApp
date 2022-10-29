@@ -1,4 +1,4 @@
-package com.example.quizapp.activity
+package com.example.quizapp.ui.activity
 
 import android.os.Bundle
 import android.view.Menu
@@ -6,6 +6,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -13,6 +14,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.quizapp.R
 import com.example.quizapp.databinding.ActivityMainBinding
+import com.google.android.material.appbar.MaterialToolbar
 
 class MainActivity : AppCompatActivity() {
 
@@ -53,7 +55,6 @@ class MainActivity : AppCompatActivity() {
             when (navController.currentDestination?.id) {
                 R.id.mainScreenFragment -> finish()
                 R.id.eightClassScreenFragment,
-                R.id.ninthClassScreenFragment
                 -> {
                     navController.navigate(R.id.mainScreenFragment)
                 }

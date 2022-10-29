@@ -1,4 +1,4 @@
-package com.example.quizapp.fragment
+package com.example.quizapp.ui.activity.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.quizapp.Constants
+import com.example.quizapp.Constants.EIGHT_CLASS
+import com.example.quizapp.Constants.NINTH_CLASS
 import com.example.quizapp.R
 import com.example.quizapp.databinding.FragmentMainScreenBinding
 
@@ -50,16 +53,19 @@ class MainScreenFragment : Fragment() {
             enabledEightClass(false)
         }
 
-    private fun onContinueButtonClicked() {
+    private fun onContinueButtonClicked() =
         binding.btnContinue.setOnClickListener {
-            if (isEightClassEnabled) {
-                findNavController().navigate(R.id.action_mainScreenFragment_to_eightClassScreenFragment)
+            val openChosenClass = if (isEightClassEnabled) {
+                EIGHT_CLASS
+            } else {
+                NINTH_CLASS
             }
-            if (isNinthClassEnabled) {
-                findNavController().navigate(R.id.action_mainScreenFragment_to_ninthClassScreenFragment)
-            }
+            findNavController().navigate(
+                MainScreenFragmentDirections.actionMainScreenFragmentToEightClassScreenFragment(
+                    openChosenClass
+                )
+            )
         }
-    }
 
     private fun enabledEightClass(isEnabled: Boolean) =
         if (isEnabled) {

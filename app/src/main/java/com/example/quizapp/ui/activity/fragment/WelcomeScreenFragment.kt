@@ -1,4 +1,4 @@
-package com.example.quizapp.fragment
+package com.example.quizapp.ui.activity.fragment
 
 import android.animation.Animator
 import android.os.Bundle
