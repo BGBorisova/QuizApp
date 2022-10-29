@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/welcomeScreenFragment"
-        android:name="com.example.quizapp.WelcomeScreenFragment"
+        android:name="com.example.quizapp.ui.activity.fragment.WelcomeScreenFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_welcome_screen">
 
@@ -18,12 +18,52 @@
     </fragment>
     <fragment
         android:id="@+id/mainScreenFragment"
-        android:name="com.example.quizapp.MainScreenFragment"
+        android:name="com.example.quizapp.ui.activity.fragment.MainScreenFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_main_screen">
 
         <action
             android:id="@+id/action_MainScreenFragment_to_WelcomeScreenFragment"
             app:destination="@id/welcomeScreenFragment" />
+        <action
+            android:id="@+id/action_mainScreenFragment_to_eightClassScreenFragment"
+            app:destination="@id/moduleScreenFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/moduleScreenFragment"
+        android:name="com.example.quizapp.ui.activity.fragment.ModuleScreenFragment"
+        android:label="8 клас"
+        tools:layout="@layout/fragment_module_screen">
+        <action
+            android:id="@+id/action_moduleScreenFragment_to_testScreenFragment"
+            app:destination="@id/testScreenFragment" />
+
+        <argument
+            android:name="classLevel"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+
+        <argument
+            android:name="backFromTest"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/testScreenFragment"
+        android:name="com.example.quizapp.ui.activity.fragment.TestScreenFragment"
+        android:label="8 клас"
+        tools:layout="@layout/fragment_test_screen">
+
+        <argument
+            android:name="test"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_testScreenFragment_to_moduleScreenFragment"
+            app:destination="@id/moduleScreenFragment" />
+    </fragment>
+
 </navigation>

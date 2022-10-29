@@ -13,4 +13,6 @@
     <string name="text_description">Теставай знанията си по Информатика с няколко клика!</string>
     <string name="eight_class">8 клас</string>
     <string name="ninth_class">9 клас</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
