@@ -27,14 +27,14 @@
             app:destination="@id/welcomeScreenFragment" />
         <action
             android:id="@+id/action_mainScreenFragment_to_eightClassScreenFragment"
-            app:destination="@id/eightClassScreenFragment" />
+            app:destination="@id/moduleScreenFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/eightClassScreenFragment"
-        android:name="com.example.quizapp.ui.activity.fragment.EightClassExamFragment"
+        android:id="@+id/moduleScreenFragment"
+        android:name="com.example.quizapp.ui.activity.fragment.ModuleScreenFragment"
         android:label="8 клас"
-        tools:layout="@layout/fragment_eight_class_exam">
+        tools:layout="@layout/fragment_module_screen">
 
         <argument
             android:name="classLevel"

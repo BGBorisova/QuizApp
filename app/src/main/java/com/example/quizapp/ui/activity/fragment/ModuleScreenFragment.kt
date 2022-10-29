@@ -11,14 +11,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quizapp.Constants.EIGHT_CLASS
 import com.example.quizapp.Constants.NINTH_CLASS
 import com.example.quizapp.data.Module
-import com.example.quizapp.databinding.FragmentEightClassExamBinding
+import com.example.quizapp.databinding.FragmentModuleScreenBinding
 import com.example.quizapp.ui.activity.adapter.ItemListener
 import com.example.quizapp.ui.activity.adapter.ModuleAdapter
 
-class EightClassExamFragment : Fragment(), ItemListener {
+class ModuleScreenFragment : Fragment(), ItemListener {
 
-    private lateinit var binding: FragmentEightClassExamBinding
-    private val args: EightClassExamFragmentArgs by navArgs()
+    private lateinit var binding: FragmentModuleScreenBinding
+    private val args: ModuleScreenFragmentArgs by navArgs()
     private var adapter = ModuleAdapter(this)
     private var isEightClass: Boolean? = null
 
@@ -26,7 +26,7 @@ class EightClassExamFragment : Fragment(), ItemListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentEightClassExamBinding.inflate(inflater, container, false)
+        binding = FragmentModuleScreenBinding.inflate(inflater, container, false)
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.adapter = adapter
         binding.lifecycleOwner = this

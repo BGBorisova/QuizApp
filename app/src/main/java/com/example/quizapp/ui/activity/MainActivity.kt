@@ -6,7 +6,6 @@ import android.view.MenuItem
 import android.view.View
 import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -14,7 +13,6 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.quizapp.R
 import com.example.quizapp.databinding.ActivityMainBinding
-import com.google.android.material.appbar.MaterialToolbar
 
 class MainActivity : AppCompatActivity() {
 
@@ -54,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         onBackPressedDispatcher.addCallback(this) {
             when (navController.currentDestination?.id) {
                 R.id.mainScreenFragment -> finish()
-                R.id.eightClassScreenFragment,
+                R.id.moduleScreenFragment,
                 -> {
                     navController.navigate(R.id.mainScreenFragment)
                 }
