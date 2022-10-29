@@ -39,7 +39,10 @@ class ModuleViewHolder(
 ) : RecyclerView.ViewHolder(itemView) {
 
     fun bind(module: Module) {
-        binding.txtTitle.text = module.title
+        binding.btnModule.text = module.title
+        binding.root.setOnClickListener {
+            itemListener.onItemSelected(module)
+        }
     }
 }
 

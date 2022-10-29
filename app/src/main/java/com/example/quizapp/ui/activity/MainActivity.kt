@@ -41,6 +41,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.mainScreenFragment -> {
                     binding.toolbar.visibility = View.GONE
                 }
+                R.id.moduleScreenFragment -> {
+                    binding.toolbar.visibility = View.GONE
+                }
                 else -> {
                     binding.toolbar.visibility = View.VISIBLE
                     binding.toolbar.navigationIcon = null
