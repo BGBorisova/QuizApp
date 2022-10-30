@@ -58,7 +58,7 @@
         tools:layout="@layout/fragment_test_screen">
 
         <argument
-            android:name="test"
+            android:name="testId"
             android:defaultValue="0"
             app:argType="integer" />
         <action

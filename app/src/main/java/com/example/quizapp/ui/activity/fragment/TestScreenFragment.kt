@@ -35,13 +35,13 @@ class TestScreenFragment : Fragment() {
         activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner) {
             findNavController().navigate(
                 TestScreenFragmentDirections.actionTestScreenFragmentToModuleScreenFragment(
-                    if (args.test <= NUMBER_OF_EIGHT_CLASS_MODULES) EIGHT_CLASS else NINTH_CLASS
+                    if (args.testId <= NUMBER_OF_EIGHT_CLASS_MODULES) EIGHT_CLASS else NINTH_CLASS
                 )
             )
         }
 
     private fun openChosenTest() =
-        when (args.test) {
+        when (args.testId) {
             1 -> {
                 binding.txtTest.text = "1"
             }

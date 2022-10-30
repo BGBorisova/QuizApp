@@ -4,7 +4,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/brain_background">
+
+        <View
+            android:id="@+id/transparent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="@integer/alpha_percentage"
+            android:background="@color/dark_blue" />
 
         <TextView
             android:id="@+id/txtScreenTitle"
@@ -13,7 +21,7 @@
             android:layout_marginTop="@dimen/margin_medium"
             android:fontFamily="@font/dm_sans_bold"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="@dimen/text_size_header"
             app:layout_constraintTop_toTopOf="parent" />
 
