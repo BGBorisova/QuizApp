@@ -1,14 +1,10 @@
 package com.example.quizapp.ui.activity.fragment
 
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.core.view.children
-import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -84,12 +80,12 @@ class ModuleScreenFragment : Fragment(), ItemListener {
         if (binding.btnStart.isEnabled) binding.btnStart.backgroundTintList =
             ContextCompat.getColorStateList(requireContext(), R.color.dark_orange)
         else binding.btnStart.backgroundTintList =
-            ContextCompat.getColorStateList(requireContext(), R.color.light_orange)
+            ContextCompat.getColorStateList(requireContext(), R.color.dark_purple)
     }
 
     override fun onItemSelected(item: Module) {
-        Log.d("HHH","${item.moduleId}")
         enabledStartButton(true)
+        onStartButtonClicked(item)
     }
 
     private fun onStartButtonClicked(item: Module) {

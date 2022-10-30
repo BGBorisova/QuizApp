@@ -61,7 +61,7 @@ class MainScreenFragment : Fragment() {
                 NINTH_CLASS
             }
             findNavController().navigate(
-                MainScreenFragmentDirections.actionMainScreenFragmentToEightClassScreenFragment(
+                MainScreenFragmentDirections.actionMainScreenFragmentToModuleScreenFragment(
                     openChosenClass
                 )
             )

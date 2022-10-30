@@ -23,16 +23,6 @@ class ModuleAdapter(private val itemListener: ItemListener) :
     }
 
     override fun onBindViewHolder(holder: ModuleViewHolder, position: Int) {
-//        val module = items[position]
-//        holder.bind(module)
-//        holder.itemView.setOnClickListener {
-//            selectedItemPosition = position
-//            notifyDataSetChanged()
-//        }
-//        if (selectedItemPosition == position)
-//            holder.itemView.setBackgroundColor(Color.parseColor("#DC746C"))
-//        else
-//            holder.itemView.setBackgroundColor(Color.parseColor("#E49B83"))
         val module = items[position]
         holder.bind(module)
         holder.binding.btnModule.setOnClickListener {

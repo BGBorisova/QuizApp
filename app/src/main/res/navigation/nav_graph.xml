@@ -26,8 +26,11 @@
             android:id="@+id/action_MainScreenFragment_to_WelcomeScreenFragment"
             app:destination="@id/welcomeScreenFragment" />
         <action
-            android:id="@+id/action_mainScreenFragment_to_eightClassScreenFragment"
+            android:id="@+id/action_mainScreenFragment_to_moduleScreenFragment"
             app:destination="@id/moduleScreenFragment" />
+        <!--        <action-->
+<!--            android:id="@+id/action_mainScreenFragment_to_eightClassScreenFragment"-->
+<!--            app:destination="@id/moduleScreenFragment" />-->
     </fragment>
 
     <fragment
