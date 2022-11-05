@@ -1,5 +1,6 @@
 package com.example.quizapp.ui.activity.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,12 +31,15 @@ class ModuleAdapter(private val itemListener: ItemListener) :
             itemListener.onItemSelected(module)
             notifyDataSetChanged()
         }
-        if (selectedItemPosition == position)
+        if (selectedItemPosition == position) {
             holder.binding.btnModule.backgroundTintList =
                 ContextCompat.getColorStateList(holder.itemView.context, R.color.dark_orange)
-        else
+            holder.binding.btnModule.setTextColor(holder.itemView.context.resources.getColor(R.color.white))
+        } else {
             holder.binding.btnModule.backgroundTintList =
-                ContextCompat.getColorStateList(holder.itemView.context, R.color.light_orange)
+                ContextCompat.getColorStateList(holder.itemView.context, R.color.white)
+            holder.binding.btnModule.setTextColor(holder.itemView.context.resources.getColor(R.color.dark_orange))
+        }
     }
 
     override fun getItemCount() = items.size

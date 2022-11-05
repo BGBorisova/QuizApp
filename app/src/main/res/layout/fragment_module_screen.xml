@@ -12,7 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:alpha="@integer/alpha_percentage"
-            android:background="@color/dark_blue" />
+            android:background="@color/light_orange" />
 
         <TextView
             android:id="@+id/txtScreenTitle"
@@ -46,7 +46,7 @@
             android:enabled="false"
             android:focusable="true"
             android:paddingVertical="10dp"
-            android:text="Старт"
+            android:text="Започни"
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="@color/white"
