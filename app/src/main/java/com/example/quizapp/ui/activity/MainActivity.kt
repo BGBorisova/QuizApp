@@ -33,9 +33,9 @@ class MainActivity : AppCompatActivity() {
     private fun createOnBackPressedCallback() =
         onBackPressedDispatcher.addCallback(this) {
             when (navController.currentDestination?.id) {
-                R.id.mainScreenFragment -> finish()
+                R.id.initialScreenFragment -> finish()
                 R.id.moduleScreenFragment -> {
-                    navController.navigate(R.id.mainScreenFragment)
+                    navController.navigate(R.id.initialScreenFragment)
                 }
                 else -> navController.navigateUp()
             }

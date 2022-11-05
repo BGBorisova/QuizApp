@@ -13,20 +13,18 @@
 
         <action
             android:id="@+id/action_WelcomeScreenFragment_to_MainScreenFragment"
-            app:destination="@id/mainScreenFragment"
+            app:destination="@id/initialScreenFragment"
             app:enterAnim="@anim/fade_in" />
     </fragment>
     <fragment
-        android:id="@+id/mainScreenFragment"
-        android:name="com.example.quizapp.ui.activity.fragment.MainScreenFragment"
+        android:id="@+id/initialScreenFragment"
+        android:name="com.example.quizapp.ui.activity.fragment.InitialScreenFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_main_screen">
+        tools:layout="@layout/fragment_initial_screen">
 
         <action
-            android:id="@+id/action_MainScreenFragment_to_WelcomeScreenFragment"
-            app:destination="@id/welcomeScreenFragment" />
-        <action
-            android:id="@+id/action_mainScreenFragment_to_eightClassScreenFragment"
+            app:enterAnim="@anim/fade_in"
+            android:id="@+id/action_initialScreenFragment_to_moduleScreenFragment"
             app:destination="@id/moduleScreenFragment" />
     </fragment>
 
@@ -35,7 +33,9 @@
         android:name="com.example.quizapp.ui.activity.fragment.ModuleScreenFragment"
         android:label="8 клас"
         tools:layout="@layout/fragment_module_screen">
+
         <action
+            app:enterAnim="@anim/fade_in"
             android:id="@+id/action_moduleScreenFragment_to_testScreenFragment"
             app:destination="@id/testScreenFragment" />
 
@@ -58,10 +58,11 @@
         tools:layout="@layout/fragment_test_screen">
 
         <argument
-            android:name="test"
+            android:name="testId"
             android:defaultValue="0"
             app:argType="integer" />
         <action
+            app:enterAnim="@anim/fade_in"
             android:id="@+id/action_testScreenFragment_to_moduleScreenFragment"
             app:destination="@id/moduleScreenFragment" />
     </fragment>

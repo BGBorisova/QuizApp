@@ -15,4 +15,10 @@
     <string name="ninth_class">9 клас</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="initial_text_1">Добре дошъл в Test IT.</string>
+    <string name="initial_text_2">Тествай знанията си \n по Информатика.</string>
+    <string name="initial_text_3">Предизвикай себе си.</string>
+    <string name="initial_text_4">Проследи напредъка си.</string>
+    <string name="continue_to_the_next_screen">Продължи</string>
+
 </resources>

@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quizapp.Constants.EIGHT_CLASS
+import com.example.quizapp.R
 import com.example.quizapp.data.Module
 import com.example.quizapp.databinding.FragmentModuleScreenBinding
 import com.example.quizapp.ui.activity.adapter.ItemListener
@@ -39,8 +41,8 @@ class ModuleScreenFragment : Fragment(), ItemListener {
         isEightClass =
             args.classLevel.equals(EIGHT_CLASS) || (backArgs.backFromTest.equals(EIGHT_CLASS))
         when (isEightClass) {
-            true -> binding.txtScreenTitle.text = "8 клас"
-            else -> binding.txtScreenTitle.text = "9 клас"
+            true -> binding.txtScreenTitle.text = getString(R.string.eight_class)
+            else -> binding.txtScreenTitle.text = getString(R.string.ninth_class)
         }
     }
 
@@ -73,10 +75,27 @@ class ModuleScreenFragment : Fragment(), ItemListener {
             )
         }
 
-    override fun onItemSelected(item: Module) = findNavController().navigate(
-        ModuleScreenFragmentDirections.actionModuleScreenFragmentToTestScreenFragment(
-            item.moduleId
-        )
-    )
+    private fun enabledStartButton(isEnabled: Boolean) {
+        binding.btnStart.isEnabled = isEnabled
+        if (binding.btnStart.isEnabled) binding.btnStart.backgroundTintList =
+            ContextCompat.getColorStateList(requireContext(), R.color.dark_orange)
+        else binding.btnStart.backgroundTintList =
+            ContextCompat.getColorStateList(requireContext(), R.color.dark_purple)
+    }
+
+    override fun onItemSelected(item: Module) {
+        enabledStartButton(true)
+        onStartButtonClicked(item)
+    }
+
+    private fun onStartButtonClicked(item: Module) {
+        binding.btnStart.setOnClickListener {
+            findNavController().navigate(
+                ModuleScreenFragmentDirections.actionModuleScreenFragmentToTestScreenFragment(
+                    item.moduleId
+                )
+            )
+        }
+    }
 }
 
