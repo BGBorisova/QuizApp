@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.quizapp.R
 import com.example.quizapp.data.InitialView
-import com.example.quizapp.databinding.FragmentMainScreenBinding
+import com.example.quizapp.databinding.FragmentInitialScreenBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import org.relaxifyapp.me.adapters.initial.InitialAdapter
 import java.util.*
@@ -18,15 +18,15 @@ import java.util.*
 private const val DELAY_MS: Long = 14500
 private const val PERIOD_MS: Long = 14500
 
-class MainScreenFragment : Fragment() {
+class InitialScreenFragment : Fragment() {
 
-    private lateinit var binding: FragmentMainScreenBinding
+    private lateinit var binding: FragmentInitialScreenBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentMainScreenBinding.inflate(inflater, container, false)
+        binding = FragmentInitialScreenBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -57,7 +57,7 @@ class MainScreenFragment : Fragment() {
     private fun onContinueButtonClicked() =
         binding.btnContinue.setOnClickListener {
             findNavController().navigate(
-                MainScreenFragmentDirections.actionMainScreenFragmentToModuleScreenFragment()
+                InitialScreenFragmentDirections.actionInitialScreenFragmentToModuleScreenFragment()
             )
         }
 //
@@ -117,19 +117,19 @@ class MainScreenFragment : Fragment() {
         return listOf(
             InitialView(
                 R.drawable.ic_initial_1,
-                "Добре дошъл в Test IT."
+                getString(R.string.initial_text_1)
             ),
             InitialView(
                 R.drawable.ic_initial_2,
-                "Тествай знанията си \n по Информатика."
+               getString(R.string.initial_text_2)
             ),
             InitialView(
                 R.drawable.ic_initial_3,
-                "Предизвикай себе си."
+                getString(R.string.initial_text_3)
             ),
             InitialView(
                 R.drawable.ic_initial_4,
-                "Проследи напредъка си."
+                getString(R.string.initial_text_4)
             )
         )
     }

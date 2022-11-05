@@ -6,15 +6,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
-        tools:context=".ui.activity.fragment.MainScreenFragment">
-
-<!--        <View-->
-<!--            android:id="@+id/transparent"-->
-<!--            android:background="@color/dark_blue"-->
-<!--            android:alpha="@integer/alpha_percentage"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"/>-->
+        tools:context=".ui.activity.fragment.InitialScreenFragment">
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/initialViewPager"
@@ -55,7 +47,7 @@
             android:clickable="true"
             android:focusable="true"
             android:paddingVertical="10dp"
-            android:text="Продължи"
+            android:text="@string/continue_to_the_next_screen"
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="@color/white"
