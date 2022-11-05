@@ -91,7 +91,7 @@ class InitialScreenFragment : Fragment() {
         binding.initialViewPager.adapter = adapter
         TabLayoutMediator(binding.initialTabLayout, binding.initialViewPager) { _, _ ->
         }.attach()
-        automateViewPagerSwiping()
+//        automateViewPagerSwiping()
     }
 
     private fun automateViewPagerSwiping() {
