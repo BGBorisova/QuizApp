@@ -11,5 +11,29 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/txtAnswer1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/txtQuestion" />
+
+        <TextView
+            android:id="@+id/txtAnswer2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/txtAnswer1" />
+
+        <TextView
+            android:id="@+id/txtAnswer3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/txtAnswer2" />
+
+        <TextView
+            android:id="@+id/txtAnswer4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/txtAnswer3" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

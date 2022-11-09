@@ -1,6 +1,7 @@
 package com.example.quizapp.ui.activity.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quizapp.Constants.EIGHT_CLASS
 import com.example.quizapp.Constants.NINTH_CLASS
 import com.example.quizapp.data.Question
+import com.example.quizapp.data.QuestionGenerator
 import com.example.quizapp.databinding.FragmentTestScreenBinding
 import com.example.quizapp.ui.activity.adapter.TestAdapter
 import com.example.quizapp.ui.activity.adapter.TestItemListener
@@ -31,29 +33,32 @@ class TestScreenFragment : Fragment(), TestItemListener {
         binding = FragmentTestScreenBinding.inflate(inflater, container, false)
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.adapter = adapter
-        adapter.setItems(getQuestions())
-        openChosenTest()
+        setTest()
+//        openChosenTest()
         onBackPressed()
         return binding.root
     }
 
+    private fun setTest() {
+        binding.txtTest.setOnClickListener {
+            openChosenTest()
+        }
+    }
+
     private fun getQuestions(): List<Question> {
-        return listOf(
-            Question(id=1,"Колко е 5 + 5",true),
-            Question(id=1,"Колко е 5 + 5",true),
-            Question(id=1,"Колко е 5 + 5",true),
-            Question(id=1,"Колко е 5 + 5",true),
-            Question(id=1,"Колко е 5 + 5",true),
-            Question(id=1,"Колко е 5 + 5",true),
-            Question(id=1,"Колко е 5 + 5",true),
-            Question(id=1,"Колко е 5 + 5",true),
-            Question(id=1,"Колко е 5 + 5",true),
-            Question(id=1,"Колко е 5 + 5",true),
-            Question(id=1,"Колко е 5 + 5",true),
-            Question(id=1,"Колко е 5 + 5",true),
-            Question(id=1,"Колко е 5 + 5",true),
-            Question(id=1,"Колко е 5 + 5",true),
-        )
+        val questions = QuestionGenerator().getAllQuestions()
+        when (args.testId) {
+            1 -> {
+                questions.takeIf { questions.any { it.id == 1 } }?.shuffled()?.takeLast(3)
+            }
+            2 -> {
+                questions.takeIf { questions.any { it.id == 2 } }?.shuffled()?.takeLast(3)
+            }
+//            else -> {
+//                questions.takeIf { it }.shuffled().takeLast(3)
+//            }
+        }
+        return questions.toList()
     }
 
     private fun onBackPressed() =
@@ -65,15 +70,17 @@ class TestScreenFragment : Fragment(), TestItemListener {
             )
         }
 
-    private fun openChosenTest() =
+    private fun openChosenTest() {
         when (args.testId) {
             args.testId -> {
-                binding.txtTest.text = args.testId.toString()
+                adapter.setItems(getQuestions())
             }
             else -> {
                 binding.txtTest.text = "1"
             }
         }
+        Log.d("HHH", "${args.testId}")
+    }
 
     override fun onItemSelected(item: Question) {}
 }

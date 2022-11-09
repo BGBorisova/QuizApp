@@ -4,13 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.quizapp.Constants.EIGHT_CLASS
 import com.example.quizapp.R
 import com.example.quizapp.data.Module
 import com.example.quizapp.databinding.FragmentModuleScreenBinding
@@ -35,17 +33,7 @@ class ModuleScreenFragment : Fragment(), ItemListener {
         return binding.root
     }
 
-//    private fun openCorrectScreen() {
-//        isEightClass =
-//            args.classLevel.equals(EIGHT_CLASS) || (backArgs.backFromTest.equals(EIGHT_CLASS))
-//        when (isEightClass) {
-//            true -> binding.txtScreenTitle.text = getString(R.string.eight_class)
-//            else -> binding.txtScreenTitle.text = getString(R.string.ninth_class)
-//        }
-//    }
-
     private fun getItems() =
-//        if (isEightClass == true) {
         listOf(
             Module(moduleId = 1, "Основи на информатиката"),
             Module(moduleId = 2, "Среда за визуално програмиране"),
