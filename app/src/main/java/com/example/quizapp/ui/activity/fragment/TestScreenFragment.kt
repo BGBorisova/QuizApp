@@ -33,16 +33,12 @@ class TestScreenFragment : Fragment(), TestItemListener {
         binding = FragmentTestScreenBinding.inflate(inflater, container, false)
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.adapter = adapter
-        setTest()
+//        testQuestionNumbers()
+        startTest()
         onBackPressed()
         return binding.root
     }
 
-    private fun setTest() {
-        binding.txtTest.setOnClickListener {
-            openChosenTest()
-        }
-    }
 
     private fun onBackPressed() =
         activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner) {
@@ -53,15 +49,47 @@ class TestScreenFragment : Fragment(), TestItemListener {
             )
         }
 
+    private var numberOfQuestions = 10
+
+    private fun startTest() {
+        binding.txtTest.setOnClickListener {
+            openChosenTest()
+        }
+    }
+
+    private fun testQuestionNumbers() {
+
+        binding.txtTake10.setOnClickListener {
+            setNumberOfQuestions(2)
+            startTest()
+        }
+
+        binding.txtTake15.setOnClickListener {
+            setNumberOfQuestions(4)
+            startTest()
+        }
+
+        binding.txtTake20.setOnClickListener {
+            setNumberOfQuestions(6)
+            startTest()
+        }
+    }
+
+    private fun setNumberOfQuestions(numberOfQuestions: Int) {
+        this.numberOfQuestions = numberOfQuestions
+    }
+
     private fun openChosenTest() {
         when (args.testId) {
-            args.testId -> {
-                adapter.setItems(QuestionGenerator().getFirstModuleQuestions())
+            1 -> {
+                adapter.setItems(
+                    QuestionGenerator().getFirstModuleQuestions()
+//                        .shuffled()
+//                        .takeLast(numberOfQuestions)
+                )
             }
-            args.testId -> {
-                val testAdapter = TestAdapter(this)
-                binding.recyclerView.adapter = testAdapter
-                testAdapter.setItems(QuestionGenerator().getSecondModuleQuestions())
+            2 -> {
+                adapter.setItems(QuestionGenerator().getSecondModuleQuestions())
             }
             else -> {
                 binding.txtTest.text = "1"
@@ -70,6 +98,7 @@ class TestScreenFragment : Fragment(), TestItemListener {
 
         Log.d("HHH", "${args.testId}")
     }
+
 
     override fun onItemSelected(item: Question) {}
 }
