@@ -2,69 +2,184 @@ package com.example.quizapp.data
 
 class QuestionGenerator {
 
-    fun getAllQuestions() = listOf(
+    fun getFirstModuleQuestions() = listOf(
         Question(
-            id = 1, "getFirstModuleQuestions", listOf(
-                Answer(1, "5231 li e", false),
-                Answer(2, "5 li e", false),
-                Answer(3, "10 li e", true),
-                Answer(4, "5 li e", false)
+            id = 1, "Десетичният запис на числото 10011011 е:Десетичният запис на числото 10011011 е:", listOf(
+                Answer(1, "155", true),
+                Answer(2, "156", false),
+                Answer(3, "911", false),
+                Answer(4, "103", false)
             )
         ),
         Question(
-            id = 1, "131313 е 5 + 5", listOf(
-                Answer(1, "531313 li e", false),
-                Answer(2, "5 li e", false),
-                Answer(3, "10 li e", true),
-                Answer(4, "5 li e", false)
+            id = 1, "Двоичният запис на числото 62 е:", listOf(
+                Answer(1, "100001", false),
+                Answer(2, "10001010 ", false),
+                Answer(3, "111110", true),
+                Answer(4, "10001000", false)
             )
         ),
         Question(
-            id = 1, "Ко131313лко е 5 + 5", listOf(
-                Answer(1, "13131315 li e", false),
-                Answer(2, "5131313 li e", false),
-                Answer(3, "10131313 li e", true),
-                Answer(4, "5131313 li e", false)
+            id = 1, "Сборът на числата 1101 и 101 e:", listOf(
+                Answer(1, "1001", false),
+                Answer(2, "10001", false),
+                Answer(3, "1010", false),
+                Answer(4, "10010", true)
             )
         ),
         Question(
-            id = 1, "Колко е 5 + 5", listOf(
-                Answer(1, "5 li e", false),
-                Answer(2, "5 li e", false),
-                Answer(3, "10 li e", true),
-                Answer(4, "5 li e", false)
+            id = 1, "Коя от следните дейности е пример за събиране на информация?", listOf(
+                Answer(1, "Проверка на показанията на водомера ", true),
+                Answer(2, "Изчисляване на стойността на потреблението на вода на база на показанията от водомера", false),
+                Answer(3, "Въвеждане на показанията от водомера в информационната система на водоснабдителното дружество", false),
+                Answer(4, "Изпращане на фактура до клиента, съдържаща информация за потреблението на вода и неговата стойност", false)
             )
         ),
         Question(
-            id = 2, "getSecondModuleQuestions", listOf(
-                Answer(1, "5 li e", false),
-                Answer(2, "5 li e", false),
-                Answer(3, "10 li e", true),
-                Answer(4, "5 li e", false)
+            id = 1, "Посочете вярното твърдение, отнасящо се до циклични алгоритми с предусловие.", listOf(
+                Answer(1, "Условието се състои от всички действия, които трябва да се изпълнят преди цикъла. ", false),
+                Answer(2, "Цикличният процес може да не се изпълни нито веднъж.", true),
+                Answer(3, "Цикличният процес задължително ще се изпълни поне два пъти.", false),
+                Answer(4, "Всички повтарящи се действия трябва да предшестват условието.", false)
             )
         ),
         Question(
-            id = 2, "getSecondModuleQuestions", listOf(
-                Answer(1, "5 li e", false),
-                Answer(2, "5 li e", false),
-                Answer(3, "10 li e", true),
-                Answer(4, "5 li e", false)
+            id = 1, "На която и позиция да е написан даден символ той винаги има една и съща стойност. Това твърдение се отнася за:", listOf(
+                Answer(1, "Не се отнася за бройни системи.", false),
+                Answer(2, "И двата вида бройни системи.", false),
+                Answer(3, "Непозиционните бройни системи.", true),
+                Answer(4, "Позиционните бройни системи.", false)
             )
         ),
         Question(
-            id = 2, "getSecondModuleQuestions", listOf(
-                Answer(1, "5 li e", false),
-                Answer(2, "5 li e", false),
-                Answer(3, "10 li e", true),
-                Answer(4, "5 li e", false)
+            id = 1, "Посочи кой е верният отговор след извършване на аритметичната операция: 100(2) х 10(2)", listOf(
+                Answer(1, "1000 (2)", true),
+                Answer(2, "100000 (2)", false),
+                Answer(3, "10000(2)", false),
+                Answer(4, "100(2)", false)
             )
         ),
         Question(
-            id = 2, "getSecondModuleQuestions", listOf(
-                Answer(1, "5 li e", false),
-                Answer(2, "5 li e", false),
-                Answer(3, "10 li e", true),
-                Answer(4, "5 li e", false)
+            id = 1, "Посочи начините за описание на алгоритмите:", listOf(
+                Answer(1, "словесно", true),
+                Answer(2, "чрез езици за програмиране ", true),
+                Answer(3, "чрез блок-схеми", true),
+                Answer(4, "чрез жестове", false)
+            )
+        ),
+        Question(
+            id = 1, "Ако в един алгоритъм едно или повече действия се повтарят, той се нарича:", listOf(
+                Answer(1, "Линеен", true),
+                Answer(2, "Последователен", true),
+                Answer(3, "Цикличен", true),
+                Answer(4, "Повтарящ ", false)
+            )
+        ),
+        Question(
+            id = 1, "Кое НЕ е свойство на алгоритмите?", listOf(
+                Answer(1, "Дискретност", false),
+                Answer(2, "Формалност", false),
+                Answer(3, "Резултатност ", false),
+                Answer(4, "Съгласуваност ", true)
+            )
+        ),
+        Question(
+            id = 1, "Итерация е:", listOf(
+                Answer(1, "Едно преминаване през цикъла", true),
+                Answer(2, "Някои оператори от цикъла", false),
+                Answer(3, "Всички преминавания през цикъла ", false),
+                Answer(4, "Оператори извън цикъла ", false)
+            )
+        ),
+        Question(
+            id = 1, "За кои алгоритми е характерно свойството крайност?", listOf(
+                Answer(1, "Всичките", true),
+                Answer(2, "Разклонените", false),
+                Answer(3, "Цикличните", false),
+                Answer(4, "Линейните ", false)
+            )
+        ),
+        Question(
+            id = 1, "Рекурсивните алгоритми са вид:", listOf(
+                Answer(1, "Циклични алгоритми без разклонение", false),
+                Answer(2, "Линейни алгоритми", false),
+                Answer(3, "Разклонени алгоритми без цикъл", false),
+                Answer(4, "Циклични алгоритми ", true)
+            )
+        ),
+        Question(
+            id = 1, "Кои са двата стила на програмиране?", listOf(
+                Answer(1, "Императивен", true),
+                Answer(2, "Декларативен ", true),
+                Answer(3, "Транзитивен ", false),
+                Answer(4, "Интерпретивен", false)
+            )
+        ),
+        Question(
+            id = 1, "Кои от изброените термини са видове транслатори?", listOf(
+                Answer(1, "Компилатор", true),
+                Answer(2, "Итератор ", false),
+                Answer(3, "Интерпретатор ", true),
+                Answer(4, "Модератор", false)
+            )
+        ),
+        Question(
+            id = 1, "Как се нарича правило в език за програмиране, което показва какво означава дадено действие и как компютърът го разбира?", listOf(
+                Answer(1, "Семантично", true),
+                Answer(2, "Компилиращо ", false),
+                Answer(3, "Синтактично ", false),
+                Answer(4, "Транслиращо", false)
+            )
+        ),
+        Question(
+            id = 1, "Как се нарича процесът на превеждане на програмата от език за програмиране на машинен език?", listOf(
+                Answer(1, "Транслатор", false),
+                Answer(2, "Превод", false),
+                Answer(3, "Транспортиране  ", false),
+                Answer(4, "Транслиране ", true)
+            )
+        ),
+        Question(
+            id = 1, "Посочи десетичния запис на двоичното число 10111:", listOf(
+                Answer(1, "25", false),
+                Answer(2, "24", false),
+                Answer(3, "22", false),
+                Answer(4, "23", true)
+            )
+        ),
+        Question(
+            id = 1, "Кое е най-голямото число, което може да запише с осем двоични цифри?", listOf(
+                Answer(1, "8", false),
+                Answer(2, "15", false),
+                Answer(3, "225", true),
+                Answer(4, "63", false)
+            )
+        ),
+        Question(
+            id = 1, "При преобразуване на числа от осмична в двоична БС всяка цифра от осмичната БС (без първата) се представя в три позиции. Кои твърдения са верни?", listOf(
+                Answer(1, "Ако цифрата в осмична БС е по-малка от 2, се добавят две водещи нули", true),
+                Answer(2, "Само при цифрата 4 не се добавят водещи нули", false),
+                Answer(3, "Ако цифрата в осмична БС е по-голяма или равна на 3, се добавят две водещи нули", false),
+                Answer(4, "Ако цифрата в осмична БС е по-голяма от 3, не се добавят водещи нули", true)
+            )
+        ),
+
+    )
+    fun getSecondModuleQuestions()= listOf(
+        Question(
+            id = 2, "Интегрирана среда за програмиране IDE (integrated development environment) е:", listOf(
+                Answer(1, "Набор от библиотеки", false),
+                Answer(2, "Софтуерно приложение, което предоставя цялостна среда за разработване на софтуер", true),
+                Answer(3, "Текстов редактор", false),
+                Answer(4, "Графичен редактор", false)
+            )
+        ),
+        Question(
+            id = 2, "Java виртуалната машина (Java Virtual Machine) е:", listOf(
+                Answer(1, "Интегрирана среда за програмиране", false),
+                Answer(2, "Набор от библиотеки, събрани в машина", false),
+                Answer(3, "Софтуер, който позволява на компютъра да стартира Java програмата", true),
+                Answer(4, "Машина за създаване на програми", false)
             )
         ),
     )

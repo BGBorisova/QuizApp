@@ -34,7 +34,6 @@ class TestScreenFragment : Fragment(), TestItemListener {
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.adapter = adapter
         setTest()
-//        openChosenTest()
         onBackPressed()
         return binding.root
     }
@@ -43,22 +42,6 @@ class TestScreenFragment : Fragment(), TestItemListener {
         binding.txtTest.setOnClickListener {
             openChosenTest()
         }
-    }
-
-    private fun getQuestions(): List<Question> {
-        val questions = QuestionGenerator().getAllQuestions()
-        when (args.testId) {
-            1 -> {
-                questions.takeIf { questions.any { it.id == 1 } }?.shuffled()?.takeLast(3)
-            }
-            2 -> {
-                questions.takeIf { questions.any { it.id == 2 } }?.shuffled()?.takeLast(3)
-            }
-//            else -> {
-//                questions.takeIf { it }.shuffled().takeLast(3)
-//            }
-        }
-        return questions.toList()
     }
 
     private fun onBackPressed() =
@@ -73,12 +56,18 @@ class TestScreenFragment : Fragment(), TestItemListener {
     private fun openChosenTest() {
         when (args.testId) {
             args.testId -> {
-                adapter.setItems(getQuestions())
+                adapter.setItems(QuestionGenerator().getFirstModuleQuestions())
+            }
+            args.testId -> {
+                val testAdapter = TestAdapter(this)
+                binding.recyclerView.adapter = testAdapter
+                testAdapter.setItems(QuestionGenerator().getSecondModuleQuestions())
             }
             else -> {
                 binding.txtTest.text = "1"
             }
         }
+
         Log.d("HHH", "${args.testId}")
     }
 
