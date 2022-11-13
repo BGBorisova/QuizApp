@@ -41,7 +41,6 @@ class TestScreenFragment : Fragment(), TestItemListener {
         return binding.root
     }
 
-
     private fun onBackPressed() =
         activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner) {
             findNavController().navigate(

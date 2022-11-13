@@ -7,46 +7,97 @@
         android:layout_height="match_parent"
         tools:context=".ui.activity.fragment.TestScreenFragment">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_settings"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/txtChooseQuestions"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/margin_large"
+                android:fontFamily="@font/dm_sans_bold"
+                android:text="Избери брой въпроси:"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtTake10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:background="@drawable/background_numbers"
+                android:fontFamily="@font/dm_sans_regular"
+                android:paddingHorizontal="@dimen/margin_medium"
+                android:paddingVertical="10dp"
+                android:text="10"
+                android:textColor="@color/dark_orange"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@id/txtTake15"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtChooseQuestions" />
+
+            <TextView
+                android:id="@+id/txtTake15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:background="@drawable/background_numbers"
+                android:fontFamily="@font/dm_sans_regular"
+                android:paddingHorizontal="@dimen/margin_medium"
+                android:paddingVertical="10dp"
+                android:text="15"
+                android:textColor="@color/dark_orange"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@id/txtTake20"
+                app:layout_constraintStart_toEndOf="@id/txtTake10"
+                app:layout_constraintTop_toBottomOf="@id/txtChooseQuestions" />
+
+            <TextView
+                android:id="@+id/txtTake20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:background="@drawable/background_numbers"
+                android:fontFamily="@font/dm_sans_regular"
+                android:paddingHorizontal="@dimen/margin_medium"
+                android:paddingVertical="10dp"
+                android:text="20"
+                android:textColor="@color/dark_orange"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/txtTake15"
+                app:layout_constraintTop_toBottomOf="@id/txtChooseQuestions" />
+
+            <TimePicker
+                android:id="@+id/timePicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:timePickerMode="spinner"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtTake10" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <TextView
             android:id="@+id/txtTest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
             android:text="start text"
             android:textSize="20sp"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txtTake10"
-            android:text="take 10"
-            android:textSize="20sp"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/txtTest"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txtTake15"
-            android:text="take 15"
-            android:textSize="20sp"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/txtTake10"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txtTake20"
-            android:text="take 20"
-            android:textSize="20sp"
-            android:layout_marginTop="@dimen/margin_medium"
-            app:layout_constraintStart_toEndOf="@id/txtTake15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
