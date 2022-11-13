@@ -19,12 +19,14 @@ import com.example.quizapp.ui.activity.adapter.TestAdapter
 import com.example.quizapp.ui.activity.adapter.TestItemListener
 
 private const val NUMBER_OF_EIGHT_CLASS_MODULES = 10
+private const val DEFAULT_NUMBER_OF_QUESTIONS = 10
 
 class TestScreenFragment : Fragment(), TestItemListener {
 
     private lateinit var binding: FragmentTestScreenBinding
     private val args: TestScreenFragmentArgs by navArgs()
     private var adapter = TestAdapter(this)
+    private var numberOfQuestions = DEFAULT_NUMBER_OF_QUESTIONS
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,7 +51,6 @@ class TestScreenFragment : Fragment(), TestItemListener {
             )
         }
 
-    private var numberOfQuestions = 10
 
     private fun startTest() {
         binding.txtTest.setOnClickListener {
@@ -58,7 +59,6 @@ class TestScreenFragment : Fragment(), TestItemListener {
     }
 
     private fun testQuestionNumbers() {
-
         binding.txtTake10.setOnClickListener {
             setNumberOfQuestions(2)
             startTest()
@@ -90,6 +90,9 @@ class TestScreenFragment : Fragment(), TestItemListener {
             }
             2 -> {
                 adapter.setItems(QuestionGenerator().getSecondModuleQuestions())
+            }
+            3 -> {
+                adapter.setItems(QuestionGenerator().getThirdModuleQuestions())
             }
             else -> {
                 binding.txtTest.text = "1"
