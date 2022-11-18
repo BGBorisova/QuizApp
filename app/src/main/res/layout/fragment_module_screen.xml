@@ -47,7 +47,7 @@
             android:enabled="false"
             android:focusable="true"
             android:paddingVertical="10dp"
-            android:text="Започни"
+            android:text="Потвърди"
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="@color/white"

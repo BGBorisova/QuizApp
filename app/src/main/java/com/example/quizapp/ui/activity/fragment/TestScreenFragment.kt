@@ -19,6 +19,8 @@ import com.example.quizapp.ui.activity.adapter.TestAdapter
 import com.example.quizapp.ui.activity.adapter.TestItemListener
 
 private const val NUMBER_OF_EIGHT_CLASS_MODULES = 10
+private const val FIFTEEN_QUESTIONS = 15
+private const val TWENTY_QUESTIONS = 20
 private const val DEFAULT_NUMBER_OF_QUESTIONS = 10
 
 class TestScreenFragment : Fragment(), TestItemListener {
@@ -29,14 +31,13 @@ class TestScreenFragment : Fragment(), TestItemListener {
     private var numberOfQuestions = DEFAULT_NUMBER_OF_QUESTIONS
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentTestScreenBinding.inflate(inflater, container, false)
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.adapter = adapter
-//        testQuestionNumbers()
-        startTest()
+        setNumberOfQuestions()
+        onButtonStartClicked()
         onBackPressed()
         return binding.root
     }
@@ -50,27 +51,22 @@ class TestScreenFragment : Fragment(), TestItemListener {
             )
         }
 
-
-    private fun startTest() {
-        binding.txtTest.setOnClickListener {
+    private fun onButtonStartClicked() {
+        binding.btnStart.setOnClickListener {
+            binding.constraintDetails.visibility = View.GONE
             openChosenTest()
         }
     }
 
-    private fun testQuestionNumbers() {
+    private fun setNumberOfQuestions() {
         binding.txtTake10.setOnClickListener {
-            setNumberOfQuestions(2)
-            startTest()
+            setNumberOfQuestions(DEFAULT_NUMBER_OF_QUESTIONS)
         }
-
         binding.txtTake15.setOnClickListener {
-            setNumberOfQuestions(4)
-            startTest()
+            setNumberOfQuestions(FIFTEEN_QUESTIONS)
         }
-
         binding.txtTake20.setOnClickListener {
-            setNumberOfQuestions(6)
-            startTest()
+            setNumberOfQuestions(TWENTY_QUESTIONS)
         }
     }
 
@@ -82,25 +78,50 @@ class TestScreenFragment : Fragment(), TestItemListener {
         when (args.testId) {
             1 -> {
                 adapter.setItems(
-                    QuestionGenerator().getFirstModuleQuestions()
-//                        .shuffled()
+                    QuestionGenerator().getFirstModuleQuestions().shuffled()
 //                        .takeLast(numberOfQuestions)
                 )
             }
             2 -> {
-                adapter.setItems(QuestionGenerator().getSecondModuleQuestions())
+                adapter.setItems(
+                    QuestionGenerator().getSecondModuleQuestions()
+                        .shuffled()
+//                        .takeLast(numberOfQuestions)
+                )
             }
             3 -> {
-                adapter.setItems(QuestionGenerator().getThirdModuleQuestions())
+                adapter.setItems(
+                    QuestionGenerator().getThirdModuleQuestions().shuffled()
+//                        .takeLast(numberOfQuestions)
+                )
+            }
+            4 -> {
+                adapter.setItems(
+                    QuestionGenerator().getFourthModuleQuestions().shuffled()
+//                        .takeLast(numberOfQuestions)
+                )
+            }
+            5 -> {
+                adapter.setItems(
+                    QuestionGenerator().getFifthModuleQuestions().shuffled()
+//                        .takeLast(numberOfQuestions)
+                )
+            }
+            6 -> {
+                adapter.setItems(
+                    QuestionGenerator().getSixthModuleQuestions().shuffled()
+                        .takeLast(numberOfQuestions)
+                )
             }
             else -> {
-                binding.txtTest.text = "1"
+                adapter.setItems(
+                    QuestionGenerator().getFirstModuleQuestions().shuffled()
+                        .takeLast(numberOfQuestions)
+                )
             }
         }
-
         Log.d("HHH", "${args.testId}")
     }
-
 
     override fun onItemSelected(item: Question) {}
 }
