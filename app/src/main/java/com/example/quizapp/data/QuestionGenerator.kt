@@ -1,7 +1,5 @@
 package com.example.quizapp.data
 
-import android.text.style.QuoteSpan
-
 class QuestionGenerator {
 
     fun getFirstModuleQuestions() = listOf(
@@ -612,16 +610,721 @@ class QuestionGenerator {
             )
         ),
     )
-//
-//    fun getFourthModuleQuestions()= listOf(
-//        Question(
-//            id=4,
-//        )
-//    )
-//
-//    fun getFifthModuleQuestions()= listOf(
-//        Question(
-//            id=5,
-//        )
-//    )
+
+    fun getFourthModuleQuestions() = listOf(
+        Question(
+            id = 4,
+            "Кои от изброените понятия са конвениции за именуване на променливи и константи?",
+            listOf(
+                Answer(1, "camelNase ", false),
+                Answer(2, "camelCase", true),
+                Answer(3, "Bulgarian notation", false),
+                Answer(4, "Hungarian notation", true)
+            )
+        ),
+        Question(
+            id = 4,
+            "С кой от изброените префикси в език Java се означава контролата Label (етикет)?",
+            listOf(
+                Answer(1, "lbl", true),
+                Answer(2, "lbn", false),
+                Answer(3, "lbe", false),
+                Answer(4, "lble", false)
+            )
+        ),
+        Question(
+            id = 4, "Пояснителните коментари в Java са два вида. Посочи кои са те.?", listOf(
+                Answer(1, "Еднокомпонентни", false),
+                Answer(2, "Многоредови", true),
+                Answer(3, "Едноредови", true),
+                Answer(4, "Многокомпонентни", false)
+            )
+        ),
+        Question(
+            id = 4,
+            "Каква ще бъде вярната стойност на израза:\"Ти в момента решаваш тест по информатика.\"",
+            listOf(
+                Answer(1, "Посоченият израз не е съждителен ", false),
+                Answer(2, "Нито едно от изброените", false),
+                Answer(3, "False/лъжа", false),
+                Answer(4, "True/истина", true)
+            )
+        ),
+        Question(
+            id = 4,
+            "Дадени са ти две съждения: p = true и q = false.\n" +
+                    "Коя от посочените логически операции в израза A = !p && q || !q; ще се извърши първа?\n",
+            listOf(
+                Answer(1, "|| ", false),
+                Answer(2, "&& ", false),
+                Answer(3, "!", true),
+                Answer(4, "=", false)
+            )
+        ),
+        Question(
+            id = 4,
+            "Кои от изброените понятия са конвениции за именуване на променливи и константи?",
+            listOf(
+                Answer(1, "camelNase ", false),
+                Answer(2, "camelCase", true),
+                Answer(3, "Bulgarian notation", false),
+                Answer(4, "Hungarian notation", true)
+            )
+        ),
+        Question(
+            id = 4,
+            "С коя служебна дума се декларират булеви (логически) константи и променливи в езика C#?",
+            listOf(
+                Answer(1, "logical ", false),
+                Answer(2, "bool", false),
+                Answer(3, "logic", false),
+                Answer(4, "boolean", true)
+            )
+        ),
+        Question(
+            id = 4, "С кой знак се означава логическата операция дизюнкция в езика C#?", listOf(
+                Answer(1, "&& ", false),
+                Answer(2, "||", true),
+                Answer(3, "Нито едно от изброените ", false),
+                Answer(4, "!", false)
+            )
+        ),
+        Question(
+            id = 4, "Кои изрази имат стойност true?", listOf(
+                Answer(1, "boolean a = true || !false; ", false),
+                Answer(2, "boolean a = true && false;", false),
+                Answer(3, "boolean a = !(true && false);", true),
+                Answer(4, "boolean a = !true || false;", true)
+            )
+        ),
+        Question(
+            id = 4,
+            "Kаква ще бъде стойността на променливата c след изпълнение на следния програмен фрагмент:\n" +
+                    "int a = 3, b = 5;\n" +
+                    "boolean c = (a != b) && !(a>b) && (a==b);\n",
+            listOf(
+                Answer(1, "camelNase ", false),
+                Answer(2, "camelCase", true),
+                Answer(3, "Bulgarian notation", false),
+                Answer(4, "Hungarian notation", true)
+            )
+        ),
+        Question(
+            id = 4,
+            "Кои от изброените понятия са конвениции за именуване на променливи и константи?",
+            listOf(
+                Answer(1, "Не може да се определи ", false),
+                Answer(2, "c = 7 ", false),
+                Answer(3, "True", false),
+                Answer(4, "False", true)
+            )
+        ),
+        Question(
+            id = 4,
+            "Кои са формите на условен оператор?", listOf(
+                Answer(1, "Съкратена форма ", false),
+                Answer(2, "Кратка форма", true),
+                Answer(3, "Разширена форма", false),
+                Answer(4, "Пълна форма", true)
+            )
+        ),
+        Question(
+            id = 4,
+            "Кои са запазените ключови думи, използвани при пълната форма на условен оператор?",
+            listOf(
+                Answer(1, "if ", true),
+                Answer(2, "then", false),
+                Answer(3, "else", true),
+                Answer(4, "ellse", false)
+            )
+        ),
+        Question(
+            id = 4,
+            "Каква ще бъде стойността на променливата a след изпълнение на следния програмен фрагмент:\n" +
+                    "int a = 3, b = 6;\n" +
+                    "if (a != b )\n" +
+                    "a = a + b;\n",
+            listOf(
+                Answer(1, "true ", false),
+                Answer(2, "3", false),
+                Answer(3, "6", false),
+                Answer(4, "9", true)
+            )
+        ),
+        Question(
+            id = 4, "Какъв ще бъде резултатът след изпълнение на следния програмен фрагмент:\n" +
+                    "int a = 7, b = 5;\n" +
+                    "if (a == b );\n" +
+                    "a = a + b;\n" +
+                    "else;\n" +
+                    "b = a + b;\n",
+            listOf(
+                Answer(1, "b = 12; ", false),
+                Answer(2, "a = 12;", false),
+                Answer(3, "грешка ", true),
+                Answer(4, "a = 12 И b = 12; ", false)
+            )
+        ),
+        Question(
+            id = 4,
+            "Kаква ще бъде стойността на променливата c след изпълнение на следния програмен фрагмент:\n" +
+                    "int a = 14, b = 9, c = 2;\n" +
+                    "if (a != b ) {\n" +
+                    "a = c % b;\n" +
+                    "b = a/c;\n" +
+                    "c += a + b;\n" +
+                    "}\n",
+            listOf(
+                Answer(1, "c = 5 ", true),
+                Answer(2, "c = 0", false),
+                Answer(3, "c = 14 ", false),
+                Answer(4, "c = 9 ", false)
+            )
+        ),
+        Question(
+            id = 4,
+            "Кой вариант на изписване е ГРЕШЕН?",
+            listOf(
+                Answer(1, "if (x>0) x=2 && y=2; ", true),
+                Answer(2, "if (x>0 && y>0) x=y+2;", false),
+                Answer(3, "if (x==0) y=2", false),
+                Answer(4, "if (x>y) x=-y", false)
+            )
+        ),
+        Question(
+            id = 4,
+            "Как се означават начало и край на блок-оператор в езика C#?",
+            listOf(
+                Answer(1, "Със знака ; ", false),
+                Answer(2, "С двойка скоби [  и  ]", false),
+                Answer(3, "С двойка скоби (  и  )", false),
+                Answer(4, "Нито един от посочените начини", true)
+            )
+        ),
+        Question(
+            id = 4,
+            "Колко пъти се променя стойността на променливата х след първото присвояване и изпълнение на програмния фрагмент?\n" +
+                    "double x=-3.14, y=5.12; \n" +
+                    "if (Math.Round(x)< =0) y=Math.Round(y);\n" +
+                    "if (Math.Ceiling(x)==x) x=x+2;\n" +
+                    "else y=y+2;\n",
+            listOf(
+                Answer(1, "3 ", false),
+                Answer(2, "0", true),
+                Answer(3, "1", false),
+                Answer(4, "2", false)
+            )
+        ),
+        Question(
+            id = 4,
+            "Каква е стойността на променливата players след изпълнение на следния програмен фрагмент?\n" +
+                    "int  counter = 5,  players = 5;\n" +
+                    "if ( players > = counter )  players = 10;\n" +
+                    "if ( players == counter ) counter++;\n" +
+                    "players = counter;\n",
+            listOf(
+                Answer(1, "11 ", false),
+                Answer(2, "12", false),
+                Answer(3, "6", false),
+                Answer(4, "5", true)
+            )
+        ),
+        Question(
+            id = 4,
+            "Каква ще бъде стойността на променливата a след изпълнение на следния програмен фрагмент:\n" +
+                    "int a = 3, b = 6;\n" +
+                    "if (b > 0 )\n" +
+                    "if (а < 0 )\n" +
+                    "a = a + b;\n" +
+                    "else\n" +
+                    "a *= 2;\n",
+            listOf(
+                Answer(1, "нито едно ", false),
+                Answer(2, "3", false),
+                Answer(3, "6", true),
+                Answer(4, "9", false)
+            )
+        )
+    )
+
+    fun getFifthModuleQuestions() = listOf(
+        Question(
+            id = 5,
+            "Посочи верните твърдения:",
+            listOf(
+                Answer(1, "Безкрайни цикли не съществуват", false),
+                Answer(
+                    2,
+                    "Всеки цикъл има свое тяло – това е групата от действия, които ще се повтарят",
+                    true
+                ),
+                Answer(3, "Едно повторение на цикъла е една итерация", true),
+                Answer(
+                    4,
+                    "При цикличните алгоритми, управлявани от условие, броят на повторенията не зависи от верността на дадено логическо условие",
+                    false
+                )
+            )
+        ),
+        Question(
+            id = 5,
+            "Кой вид цикъл може да НЕ бъде изпълнен нито веднъж??",
+            listOf(
+                Answer(1, "Нито един от двата вида ", false),
+                Answer(2, "Със следусловие, цикъл do-while", false),
+                Answer(3, "И двата вида", false),
+                Answer(4, "С предусловие, цикъл while", true)
+            )
+        ),
+        Question(
+            id = 5,
+            "Каква ще бъде стойността на променливата n след изпълнение на следния програмен фрагмент:\n" +
+                    "int n = 2;\n" +
+                    "int a = 1;\n" +
+                    "while (n >= 3)\n" +
+                    "n = a + 2;\n",
+            listOf(
+                Answer(1, "1 ", false),
+                Answer(2, "2", true),
+                Answer(3, "3", false),
+                Answer(4, "Нито едно от посочените", false)
+            )
+        ),
+        Question(
+            id = 5,
+            "Каква ще бъде стойността на променливата n след изпълнение на следния програмен фрагмент:\n" +
+                    "int n = 2;\n" +
+                    "int a = 1;\n" +
+                    "do {\n" +
+                    "n += a + 2;\n" +
+                    "} while (n <= 3);\n",
+            listOf(
+                Answer(1, "3 ", false),
+                Answer(2, "2", false),
+                Answer(3, "5", true),
+                Answer(4, "Нито едно от посочените", false)
+            )
+        ),
+        Question(
+            id = 5, "Колко са видовете цикли в езика C#?", listOf(
+                Answer(1, "2 ", false),
+                Answer(2, "3", true),
+                Answer(3, "Повече", false),
+                Answer(4, "1", false)
+            )
+        ),
+        Question(
+            id = 5,
+            "Каква ще бъде стойността на променливата Х след изпълнение на следния програмен фрагмент?\n" +
+                    "int X=-1;\n" +
+                    "while (X>=0) X=Х+2;\n",
+            listOf(
+                Answer(1, "Нито една от посочените ", true),
+                Answer(2, "x = 0", false),
+                Answer(3, "x = 1 ", false),
+                Answer(4, "x = 2", false)
+            )
+        ),
+        Question(
+            id = 5, "Каква грешка е допусната в следния програмен код?\n" +
+                    "int x=10, br=0;\n" +
+                    "while (x < 20)\n" +
+                    "{\n" +
+                    "     br++;\n" +
+                    "}\n", listOf(
+                Answer(1, "Променливата br не участва в булевото условие ", false),
+                Answer(2, "В блока от скоби {  и  } е включен само един оператор", false),
+                Answer(3, "Няма знак ; след затварящата скоба", false),
+                Answer(4, "X не се изменя в тялото на цикъла", true)
+            )
+        ),
+        Question(
+            id = 5, "Итераторът е:", listOf(
+                Answer(1, "Вид условие ", false),
+                Answer(2, "Вид променлива", true),
+                Answer(3, "Вид действие ", false),
+                Answer(4, "Вид цикъл ", false)
+            )
+        ),
+        Question(
+            id = 5,
+            "Посочи верните твърдения:",
+            listOf(
+                Answer(
+                    1,
+                    "Цикълът, управляван от брояч, може да не се изпълни нито веднъж ",
+                    true
+                ),
+                Answer(2, "Цикълът се изпълнява, докато условието е вярно", true),
+                Answer(
+                    3,
+                    "Запазената ключова дума за цикъл, управляван от брояч, е while",
+                    false
+                ),
+                Answer(
+                    4,
+                    "Тялото на цикъл, управляван от брояч, винаги трябва да бъде заградено във фигурални скоби {}",
+                    false
+                )
+            )
+        ),
+        Question(
+            id = 5,
+            "Каква ще бъде стойността на променливата n след изпълнение на следния програмен фрагмент:\n" +
+                    "int n = 0; int a = 5;\n" +
+                    "for (int i = 1; i < 3; i++) {\n" +
+                    "n = a * 2;\n" +
+                    "}\n",
+            listOf(
+                Answer(1, "5 ", false),
+                Answer(2, "10", true),
+                Answer(3, "20", false),
+                Answer(4, "0", false)
+            )
+        ),
+        Question(
+            id = 5,
+            "Колко пъти ще се изпълни тялото на цикъла в следния програмен фрагмент:\n" +
+                    "int n = 0; int a = 5;\n" +
+                    "for (int i = 1; i < 3; i++){\n" +
+                    "n = a * 2;\n" +
+                    "}\n",
+            listOf(
+                Answer(1, "0 ", false),
+                Answer(2, "1", false),
+                Answer(3, "2", true),
+                Answer(4, "3", false)
+            )
+        ),
+        Question(
+            id = 5,
+            "Колко итерации ще изпълни следният цикъл:\n" +
+                    "int i, s=0;\n" +
+                    "for (i=1; i < =2; i++)\n" +
+                    "    if (i%2==1) s=s+i;\n",
+            listOf(
+                Answer(1, "0 ", false),
+                Answer(2, "1", false),
+                Answer(3, "2", true),
+                Answer(4, "Повече", false)
+            )
+        ),
+        Question(
+            id = 5,
+            "Каква стойност трябва да бъде изписана на мястото на многоточието, така че цикълът да бъде изпълнен точно 4 пъти?\n" +
+                    "int i, s=0;\n" +
+                    "for (i=2; i < .... ; i=i+2)\n" +
+                    "   s=s+1;\n",
+            listOf(
+                Answer(1, "4 ", false),
+                Answer(2, "8", false),
+                Answer(3, "10", true),
+                Answer(4, "12", false)
+            )
+        ),
+        Question(
+            id = 5, "Какво отпечатва следният програмен фрагмент:\n" +
+                    "for (int i=2; i < =10 i++)\n" +
+                    "      if (i%2==1) Console.Write(i.ToString() + \" , \");\n", listOf(
+                Answer(1, "2+4+6+8+10  ", false),
+                Answer(2, "3, 5, 7, 9", true),
+                Answer(3, "2, 4, 6, 8, 10 ", false),
+                Answer(4, "3+5+7+9", false)
+            )
+        ),
+        Question(
+            id = 5,
+            "За начало на правоъгълната координатна система в приложение с ГПИ се приема:?",
+            listOf(
+                Answer(1, "Центърът на координатна система ", false),
+                Answer(2, "Нито едно от изброените", false),
+                Answer(3, "Горният десен ъгъл на компонентата", false),
+                Answer(4, "Горният ляв ъгъл на компонентата", true)
+            )
+        ),
+        Question(
+            id = 5,
+            "Как се нарича основната фигура, от която се получава по-сложно изображение в приложение с ГПИ?",
+            listOf(
+                Answer(1, "Графично поле ", false),
+                Answer(2, "Графичен примитив", true),
+                Answer(3, "Графични координати", false),
+                Answer(4, "Графична линия", false)
+            )
+        ),
+        Question(
+            id = 5,
+            "Коя от изброените команди служи за извличане на графика в приложение с ГПИ на Java?",
+            listOf(
+                Answer(1, "Graphics g = pnlCanvas.setGraphics(); ", false),
+                Answer(2, "pnlCanvas.getGraphics();", false),
+                Answer(3, "Graphics g = pnlCanvas();", false),
+                Answer(4, "Graphics g = pnlCanvas.getGraphics();", true)
+            )
+        ),
+        Question(
+            id = 5,
+            "За да започнеш да работиш с текстов файл в Java, трябва да добавиш две библиотеки. Кои са те?",
+            listOf(
+                Answer(1, "Scanner ", true),
+                Answer(2, "File", true),
+                Answer(3, "Dox", false),
+                Answer(4, "NewFile", false)
+            )
+        ),
+        Question(
+            id = 5, "Какво е предназначението на командата, описана в програмния ред?\n" +
+                    "final String PATH = \"resources/\"; \n", listOf(
+                Answer(1, "Посочва пътя до файла ", true),
+                Answer(2, "Посочва името на файла", false),
+                Answer(3, "Посочва разширението на файла", false),
+                Answer(4, "Свързва програмата с файла", false)
+            )
+        ),
+        Question(
+            id = 5,
+            "В Java има начин, по който можеш да форматираш изчетения текстов файл. Кой програмен ред извършва това действие?",
+            listOf(
+                Answer(1, "format(„форматиращ низ\", аргументи); ", false),
+                Answer(2, "output.format(„форматиращ низ\", аргументи);", true),
+                Answer(3, "output.format(аргументи, \"форматиращ низ\");", false),
+                Answer(4, "input.format(„форматиращ низ\", аргументи);", false)
+            )
+        )
+    )
+
+    fun getSixthModuleQuestions() = listOf(
+        Question(
+            id = 6, "Масивът е:", listOf(
+                Answer(1, "Оператор от език за програмиране", false),
+                Answer(2, "Метод за програмиране", false),
+                Answer(3, "Вид алгоритъм", false),
+                Answer(4, "Структура от данни", true)
+            )
+        ),
+        Question(
+            id = 6, "Кои твърдения са верни за програмния фрагмент?\n" +
+                    "double [ ] array = new double [12];\n", listOf(
+                Answer(1, "Масивът има 12 елемента", true),
+                Answer(2, "Индексите на елементите са реални числа", false),
+                Answer(3, "Масивът има 11 елемента", false),
+                Answer(4, "Индексите на елементите са цели неотрицателни числа", true)
+            )
+        ),
+        Question(
+            id = 6,
+            "Масивът е статична структура от данни. Какво значение има определението \"статична\"?",
+            listOf(
+                Answer(
+                    1,
+                    "Броят на използваните елементи не може да е по-малък от декларирания",
+                    false
+                ),
+                Answer(2, "Нито едно от посочените", false),
+                Answer(
+                    3,
+                    "Първоначално декларираният брой елементи не може да бъде променян",
+                    true
+                ),
+                Answer(
+                    4,
+                    "Стойностите на елементите не могат да бъдат променяни, те са статични",
+                    false
+                )
+            )
+        ),
+        Question(
+            id = 6,
+            "Колко елемента (клетки от паметта) ще бъдат заделени след изпълнение на следния програмен ред:\n" +
+                    "double  [ ] test = {2.5, 2.5, 2.5, 2.5};\n",
+            listOf(
+                Answer(1, "Кодът е неправилен", false),
+                Answer(2, "2.5 ", false),
+                Answer(3, "Не е посочено", false),
+                Answer(4, "4", true)
+            )
+        ),
+        Question(
+            id = 6, "От какво се определя типът на масива?", listOf(
+                Answer(1, "Oт дължината му", false),
+                Answer(2, "Нито едно от изброените", false),
+                Answer(3, "От типа на елементите му", true),
+                Answer(4, "От неговото име", false)
+            )
+        ),
+        Question(
+            id = 6, "С какво се характеризира всеки масив?", listOf(
+                Answer(1, "С дължина", false),
+                Answer(2, "Всички изброени", true),
+                Answer(3, "С тип", false),
+                Answer(4, "С име", false)
+            )
+        ),
+        Question(
+            id = 6,
+            "В кой от изброените примери правилно е посочен броят на елементите на масив?",
+            listOf(
+                Answer(1, "int [] myArray = [5];", false),
+                Answer(2, "int [] myArray = new double [7];", false),
+                Answer(3, "int [] myArray = new int [6];", true),
+                Answer(4, "int [] myArray = new int 5;", false)
+            )
+        ),
+        Question(
+            id = 6, "Даден е следният програмен фрагмент:\n" +
+                    "int [] myArray = [9];\n" +
+                    "myArray[4] = 5;\n" +
+                    "Кое от посочените твъдения е вярно?\n", listOf(
+                Answer(1, "Програмният фрагмент е грешен", true),
+                Answer(2, "Масивът има 9 елемента", false),
+                Answer(3, "На елемент с индекс 4 се присвоява стойност 5", false),
+                Answer(4, "Масивът има 5 елемента", false)
+            )
+        ),
+        Question(
+            id = 6,
+            "Какви стойности може да заема свойството Enabled на обект (напр. на бутон, на tеxtBox и др.)?",
+            listOf(
+                Answer(1, "Стринг като всички входни данни", false),
+                Answer(2, "Нито едно от посочените", false),
+                Answer(3, "Булеви - true или false", true),
+                Answer(
+                    4,
+                    "Числови - времето (в милисекунди), за което се блокира обектът",
+                    false
+                )
+            )
+        ),
+        Question(
+            id = 6,
+            "С каква стойност трябва да инициализираш променлива, в която пресмяташ произведение?",
+            listOf(
+                Answer(1, "0", false),
+                Answer(2, "1", true),
+                Answer(3, "Зависи от типа на елементите", false),
+                Answer(4, "Нито едно от посочените", false)
+            )
+        ),
+        Question(
+            id = 6, "При обхождане на елементите на масив, те се достъпват по:", listOf(
+                Answer(1, "Условие", false),
+                Answer(2, "Големинае", false),
+                Answer(3, "Стойност ", false),
+                Answer(4, "Индекс ", true)
+            )
+        ),
+        Question(
+            id = 6, "Когато се търси максимален или минимален елемент в масив:", listOf(
+                Answer(1, "Използваме сумата на елементите", false),
+                Answer(2, "Не е нужно да се обхождат всички елементи", false),
+                Answer(3, "Сами избираме кой елемент отговаря на условието", false),
+                Answer(4, "Трябва да бъдат обходени всички елементи", true)
+            )
+        ),
+        Question(
+            id = 6, "Кои елементи се означават с определението екстремални?", listOf(
+                Answer(1, "Максималните по позиция", false),
+                Answer(2, "Минималните по стойност", true),
+                Answer(3, "Минималните по позиция", false),
+                Answer(4, "Максималните по стойност", true)
+            )
+        ),
+        Question(
+            id = 6, "Посочи верните твърдения:", listOf(
+                Answer(
+                    1,
+                    "Минималният елемент може да се среща n-пъти в масив (където n е броят на елементите в масива",
+                    true
+                ),
+                Answer(
+                    2,
+                    "Минималният елемент може да се среща точно един път в масив",
+                    false
+                ),
+                Answer(3, "Минимален елемент може да няма в масив", false),
+                Answer(
+                    4,
+                    "Минималният елемент може да се среща повече от един път в масив",
+                    true
+                )
+            )
+        ),
+        Question(
+            id = 6,
+            "Кое свойство на обект (бутон, текстово поле и др.) трябва да промениш, за да деактивираш обекта?",
+            listOf(
+                Answer(1, "Name", false),
+                Answer(2, "Items", false),
+                Answer(3, "Enabled", true),
+                Answer(4, "Click", false)
+            )
+        ),
+        Question(
+            id = 6, "Посочи верните твърдения:", listOf(
+                Answer(1, "Обхождане на масив може да се направи и с цикъл while", true),
+                Answer(
+                    2,
+                    "В един масив може да няма елементи, отговарящи на дадено условие",
+                    true
+                ),
+                Answer(
+                    3,
+                    "В един масив може да има няколко елемента, отговарящи на дадено условие",
+                    true
+                ),
+                Answer(
+                    4,
+                    "В един масив винаги има само един елемент, отговарящ на дадено условие",
+                    false
+                )
+            )
+        ),
+        Question(
+            id = 6,
+            "За преброяване елементите на масив, които отговарят на дадено условие, използваме отделна променлива - брояч. Каква начална стойност трябва да зададем на брояча?",
+            listOf(
+                Answer(1, "Не е определена ", false),
+                Answer(2, "-1", false),
+                Answer(3, "1", true),
+                Answer(4, "0", true)
+            )
+        ),
+        Question(
+            id = 6, "string [] name={\"Mary\", \"Ana\", \"Ana Mary\", \"MaryAna\"};\n" +
+                    "for (int i=0; i < 4; i++)\n" +
+                    "  if (name[i]==\"Mary\" || name[i]==\"Ana\") Console.WriteLine(name[i]);\n" +
+                    "Кои имена на приятелки ще бъдат отпечатани?\n", listOf(
+                Answer(1, "MaryAna", false),
+                Answer(2, "Ana", true),
+                Answer(3, "Ana Mary ", false),
+                Answer(4, "Mary ", true)
+            )
+        ),
+        Question(
+            id = 6,
+            "Каква ще бъде стойността на променливата day след изпълнение на програмния фрагмент?\n" +
+                    "String [] array = {\"понеделник\", \"вторник\", \"сряда\", \"четвъртък\", \"петък\"};\n" +
+                    "String day = \"понеделник\";\n" +
+                    "for(int i=1; i < array.length; i++){\n" +
+                    "if(array[i] == \"събота\")\n" +
+                    "day = \"неделя\";\n" +
+                    "}\n",
+            listOf(
+                Answer(1, "Понеделник", true),
+                Answer(2, "Неделя", false),
+                Answer(3, "Събота", false),
+                Answer(4, "Петък", false)
+            )
+        ),
+        Question(
+            id = 6,
+            "За спазване добър стил на програмиране е удачно при именуване на обект да използваш представка за типа на обекта и долепяш името му. Например: btnN, btnEnter, txtBoxN, lblName и т.н. Кое свойство на обекта трябва да промениш, за да именуваш обект по този начин?",
+            listOf(
+                Answer(1, "Name", true),
+                Answer(2, "Text ", false),
+                Answer(3, "TextName", false),
+                Answer(4, "ObjectName", false)
+            )
+        ),
+    )
 }
