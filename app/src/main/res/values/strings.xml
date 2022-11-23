@@ -20,5 +20,6 @@
     <string name="initial_text_3">Предизвикай себе си.</string>
     <string name="initial_text_4">Проследи напредъка си.</string>
     <string name="continue_to_the_next_screen">Продължи</string>
+    <string name="choose_question">Избери брой въпроси:</string>
 
 </resources>

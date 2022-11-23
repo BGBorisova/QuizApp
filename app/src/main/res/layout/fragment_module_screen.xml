@@ -12,13 +12,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:alpha="@integer/alpha_percentage"
-            android:background="@color/light_orange" />
+            android:background="@color/undefined_color" />
 
         <TextView
             android:id="@+id/txtScreenTitle"
             android:layout_width="match_parent"
+            android:text="Съдържание"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_xlarge"
             android:fontFamily="@font/dm_sans_bold"
             android:textAlignment="center"
             android:textColor="@color/white"
@@ -41,12 +42,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_large"
             android:layout_marginBottom="@dimen/margin_large"
-            android:backgroundTint="@color/dark_purple"
+            android:backgroundTint="@color/light_purple"
             android:clickable="true"
             android:enabled="false"
             android:focusable="true"
             android:paddingVertical="10dp"
-            android:text="Започни"
+            android:text="Потвърди"
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="@color/white"

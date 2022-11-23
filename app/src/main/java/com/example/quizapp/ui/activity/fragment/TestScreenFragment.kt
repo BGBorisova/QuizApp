@@ -1,6 +1,7 @@
 package com.example.quizapp.ui.activity.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,48 +13,33 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quizapp.Constants.EIGHT_CLASS
 import com.example.quizapp.Constants.NINTH_CLASS
 import com.example.quizapp.data.Question
+import com.example.quizapp.data.QuestionGenerator
 import com.example.quizapp.databinding.FragmentTestScreenBinding
 import com.example.quizapp.ui.activity.adapter.TestAdapter
 import com.example.quizapp.ui.activity.adapter.TestItemListener
 
 private const val NUMBER_OF_EIGHT_CLASS_MODULES = 10
+private const val FIFTEEN_QUESTIONS = 15
+private const val TWENTY_QUESTIONS = 20
+private const val DEFAULT_NUMBER_OF_QUESTIONS = 10
 
 class TestScreenFragment : Fragment(), TestItemListener {
 
     private lateinit var binding: FragmentTestScreenBinding
     private val args: TestScreenFragmentArgs by navArgs()
     private var adapter = TestAdapter(this)
+    private var numberOfQuestions = DEFAULT_NUMBER_OF_QUESTIONS
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentTestScreenBinding.inflate(inflater, container, false)
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.adapter = adapter
-        adapter.setItems(getQuestions())
-        openChosenTest()
+        setNumberOfQuestions()
+        onButtonStartClicked()
         onBackPressed()
         return binding.root
-    }
-
-    private fun getQuestions(): List<Question> {
-        return listOf(
-            Question(id=1,"Колко е 5 + 5",true),
-            Question(id=1,"Колко е 5 + 5",true),
-            Question(id=1,"Колко е 5 + 5",true),
-            Question(id=1,"Колко е 5 + 5",true),
-            Question(id=1,"Колко е 5 + 5",true),
-            Question(id=1,"Колко е 5 + 5",true),
-            Question(id=1,"Колко е 5 + 5",true),
-            Question(id=1,"Колко е 5 + 5",true),
-            Question(id=1,"Колко е 5 + 5",true),
-            Question(id=1,"Колко е 5 + 5",true),
-            Question(id=1,"Колко е 5 + 5",true),
-            Question(id=1,"Колко е 5 + 5",true),
-            Question(id=1,"Колко е 5 + 5",true),
-            Question(id=1,"Колко е 5 + 5",true),
-        )
     }
 
     private fun onBackPressed() =
@@ -65,15 +51,91 @@ class TestScreenFragment : Fragment(), TestItemListener {
             )
         }
 
-    private fun openChosenTest() =
+    private fun onButtonStartClicked() {
+        binding.btnStart.setOnClickListener {
+            binding.constraintDetails.visibility = View.GONE
+            openChosenTest()
+            binding.btnStart.visibility = View.GONE
+            binding.btnTake.visibility = View.VISIBLE
+        }
+    }
+
+    private fun onButtonCheckClicked() {
+        binding.btnTake.setOnClickListener {
+
+        }
+    }
+
+    private fun showResults() {
+
+    }
+
+    private fun setNumberOfQuestions() {
+        binding.txtTake10.setOnClickListener {
+            setNumberOfQuestions(DEFAULT_NUMBER_OF_QUESTIONS)
+        }
+        binding.txtTake15.setOnClickListener {
+            setNumberOfQuestions(FIFTEEN_QUESTIONS)
+        }
+        binding.txtTake20.setOnClickListener {
+            setNumberOfQuestions(TWENTY_QUESTIONS)
+        }
+    }
+
+    private fun setNumberOfQuestions(numberOfQuestions: Int) {
+        this.numberOfQuestions = numberOfQuestions
+    }
+
+    private fun openChosenTest() {
         when (args.testId) {
-            args.testId -> {
-                binding.txtTest.text = args.testId.toString()
+            1 -> {
+                adapter.setItems(
+                    QuestionGenerator().getFirstModuleQuestions().shuffled()
+//                        .takeLast(numberOfQuestions)
+                )
+            }
+            2 -> {
+                adapter.setItems(
+                    QuestionGenerator().getSecondModuleQuestions()
+                        .shuffled()
+//                        .takeLast(numberOfQuestions)
+                )
+            }
+            3 -> {
+                adapter.setItems(
+                    QuestionGenerator().getThirdModuleQuestions().shuffled()
+//                        .takeLast(numberOfQuestions)
+                )
+            }
+            4 -> {
+                adapter.setItems(
+                    QuestionGenerator().getFourthModuleQuestions().shuffled()
+//                        .takeLast(numberOfQuestions)
+                )
+            }
+            5 -> {
+                adapter.setItems(
+                    QuestionGenerator().getFifthModuleQuestions().shuffled()
+//                        .takeLast(numberOfQuestions)
+                )
+            }
+            6 -> {
+                adapter.setItems(
+                    QuestionGenerator().getSixthModuleQuestions().shuffled()
+                        .takeLast(numberOfQuestions)
+                )
             }
             else -> {
-                binding.txtTest.text = "1"
+                adapter.setItems(
+                    QuestionGenerator().getFirstModuleQuestions().shuffled()
+                        .takeLast(numberOfQuestions)
+                )
             }
         }
+        Log.d("HHH", "${args.testId}")
+    }
 
-    override fun onItemSelected(item: Question) {}
+    override fun onItemSelected(item: Question) {
+
+    }
 }
