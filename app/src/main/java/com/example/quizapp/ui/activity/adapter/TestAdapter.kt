@@ -42,7 +42,7 @@ class TestAdapter(private val testItemListener: TestItemListener) :
     ) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(question: Question) {
-            binding.txtQuestion.text = question.question
+            binding.txtQuestion.text = (adapterPosition + 1).toString() + ". " + question.question
             binding.txtAnswer1.text = question.answers[FIRST_ANSWER].text
             binding.txtAnswer2.text = question.answers[SECOND_ANSWER].text
             binding.txtAnswer3.text = question.answers[THIRD_ANSWER].text

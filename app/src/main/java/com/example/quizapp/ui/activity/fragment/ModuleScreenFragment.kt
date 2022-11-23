@@ -59,7 +59,7 @@ class ModuleScreenFragment : Fragment(), ItemListener {
     private fun onStartButtonClicked(item: Module) {
         binding.btnStart.setOnClickListener {
             findNavController().navigate(
-                ModuleScreenFragmentDirections.actionModuleScreenFragmentToTestScreenFragment(
+                ModuleScreenFragmentDirections.actionModuleScreenFragmentToSettingsScreenFragment(
                     item.moduleId
                 )
             )
