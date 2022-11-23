@@ -5,6 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/undefined_color"
         tools:context=".ui.activity.fragment.TestScreenFragment">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -12,6 +13,21 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/no_dimen"
             app:layout_constraintBottom_toTopOf="@id/btnTake"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtTime"
+            android:layout_width="@dimen/no_dimen"
+            android:layout_height="wrap_content"
+            android:background="@color/undefined_color"
+            android:fontFamily="@font/dm_sans_bold"
+            android:paddingTop="@dimen/margin_small"
+            android:paddingEnd="@dimen/margin_small"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/welcome_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.button.MaterialButton
@@ -22,6 +38,7 @@
             android:layout_marginTop="@dimen/margin_large"
             android:layout_marginBottom="@dimen/margin_large"
             android:backgroundTint="@color/dark_purple"
+            android:fontFamily="@font/dm_sans_regular"
             android:paddingVertical="10dp"
             android:text="Предай"
             android:textAlignment="center"

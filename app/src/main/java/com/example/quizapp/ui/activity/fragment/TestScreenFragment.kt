@@ -1,10 +1,12 @@
 package com.example.quizapp.ui.activity.fragment
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,7 +22,8 @@ class TestScreenFragment : Fragment(), TestItemListener {
     private lateinit var binding: FragmentTestScreenBinding
     private val args: TestScreenFragmentArgs by navArgs()
     private var adapter = TestAdapter(this)
-//    private var numberOfQuestions = DEFAULT_NUMBER_OF_QUESTIONS
+    private lateinit var timer: CountDownTimer
+    private var timeInMills = 0L
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -29,6 +32,7 @@ class TestScreenFragment : Fragment(), TestItemListener {
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.adapter = adapter
         openChosenTest()
+        setCountdownTimer()
         Log.d("HHH", "${args.time * 1000L}")
         return binding.root
     }
@@ -57,8 +61,42 @@ class TestScreenFragment : Fragment(), TestItemListener {
         }
     }
 
-    private fun showResults() {
+    override fun onStart() {
+        super.onStart()
+        timer.start()
+    }
 
+    override fun onStop() {
+        super.onStop()
+        timer.cancel()
+    }
+
+//    override fun onResume() {
+//        super.onResume()
+//        timer.start()
+//    }
+//
+//    override fun onPause() {
+//        super.onPause()
+//        timer.cancel()
+//    }
+
+    private fun setCountdownTimer() {
+        timer = object : CountDownTimer(((args.time * 60000).toLong()), 1000) {
+            override fun onTick(remaining: Long) {
+                timeInMills = remaining
+                val minute = (timeInMills / 1000) / 60
+                val seconds = (timeInMills / 1000) % 60
+                if (timeInMills < 60000) {
+                    binding.txtTime.setTextColor(resources.getColor(android.R.color.holo_red_dark))
+                }
+                binding.txtTime.text = "$minute:$seconds"
+            }
+
+            override fun onFinish() {
+                Toast.makeText(requireContext(), "Cancel", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
 //    private fun setNumberOfQuestions() {
@@ -81,7 +119,8 @@ class TestScreenFragment : Fragment(), TestItemListener {
         when (args.testId) {
             1 -> {
                 adapter.setItems(
-                    QuestionGenerator().getFirstModuleQuestions().shuffled()
+                    QuestionGenerator().getFirstModuleQuestions()
+                        .shuffled()
                         .takeLast(args.numberOfQuestions)
                 )
             }

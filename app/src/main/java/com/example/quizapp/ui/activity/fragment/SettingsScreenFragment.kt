@@ -22,7 +22,7 @@ class SettingsScreenFragment : Fragment() {
     private lateinit var binding: FragmentSettingsScreenBinding
     private val args: SettingsScreenFragmentArgs by navArgs()
     private var testId by Delegates.notNull<Int>()
-    private var testTime = 20
+    private var testTime = 10
     private var numberOfQuestions = DEFAULT_NUMBER_OF_QUESTIONS
 
 
