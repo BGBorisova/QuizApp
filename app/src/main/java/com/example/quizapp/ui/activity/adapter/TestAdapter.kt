@@ -47,6 +47,7 @@ class TestAdapter(private val testItemListener: TestItemListener) :
             binding.txtAnswer2.text = question.answers[SECOND_ANSWER].text
             binding.txtAnswer3.text = question.answers[THIRD_ANSWER].text
             binding.txtAnswer4.text = question.answers[FORTH_ANSWER].text
+            val isCorrect = question.answers.map { it.id }
         }
     }
 }

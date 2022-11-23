@@ -55,7 +55,19 @@ class TestScreenFragment : Fragment(), TestItemListener {
         binding.btnStart.setOnClickListener {
             binding.constraintDetails.visibility = View.GONE
             openChosenTest()
+            binding.btnStart.visibility = View.GONE
+            binding.btnTake.visibility = View.VISIBLE
         }
+    }
+
+    private fun onButtonCheckClicked() {
+        binding.btnTake.setOnClickListener {
+
+        }
+    }
+
+    private fun showResults() {
+
     }
 
     private fun setNumberOfQuestions() {
@@ -123,5 +135,7 @@ class TestScreenFragment : Fragment(), TestItemListener {
         Log.d("HHH", "${args.testId}")
     }
 
-    override fun onItemSelected(item: Question) {}
+    override fun onItemSelected(item: Question) {
+
+    }
 }
