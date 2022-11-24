@@ -33,42 +33,18 @@ class TestScreenFragment : Fragment(), TestItemListener {
         binding.recyclerView.adapter = adapter
         openChosenTest()
         setCountdownTimer()
-        Log.d("HHH", "${args.time * 1000L}")
+        onButtonCheckClicked()
         return binding.root
     }
 
-//    private fun onBackPressed() =
-//        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner) {
-//            findNavController().navigate(
-//                TestScreenFragmentDirections.actionTestScreenFragmentToModuleScreenFragment(
-//                    if (args.testId <= NUMBER_OF_EIGHT_CLASS_MODULES) EIGHT_CLASS else NINTH_CLASS
-//                )
-//            )
-//        }
-
-//    private fun onButtonStartClicked() {
-//        binding.btnStart.setOnClickListener {
-//            binding.constraintDetails.visibility = View.GONE
-//            openChosenTest()
-//            binding.btnStart.visibility = View.GONE
-//            binding.btnTake.visibility = View.VISIBLE
-//        }
-//    }
-
     private fun onButtonCheckClicked() {
         binding.btnTake.setOnClickListener {
-
+            //alertDialog
+            //if click yes show result
+            //if you want to check answers ->hide result screen and show them
+            adapter.isButtonTakeClicked(true)
+            adapter.notifyDataSetChanged()
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        timer.start()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        timer.cancel()
     }
 
     private fun setCountdownTimer() {
@@ -97,26 +73,12 @@ class TestScreenFragment : Fragment(), TestItemListener {
             }
 
             override fun onFinish() {
+                //save score
+                //go to score screen with result
                 Toast.makeText(requireContext(), "Cancel", Toast.LENGTH_SHORT).show()
             }
         }
     }
-
-//    private fun setNumberOfQuestions() {
-//        binding.txtTake10.setOnClickListener {
-//            setNumberOfQuestions(DEFAULT_NUMBER_OF_QUESTIONS)
-//        }
-//        binding.txtTake15.setOnClickListener {
-//            setNumberOfQuestions(FIFTEEN_QUESTIONS)
-//        }
-//        binding.txtTake20.setOnClickListener {
-//            setNumberOfQuestions(TWENTY_QUESTIONS)
-//        }
-//    }
-
-//    private fun setNumberOfQuestions(numberOfQuestions: Int) {
-//        this.numberOfQuestions = numberOfQuestions
-////    }
 
     private fun openChosenTest() {
         when (args.testId) {

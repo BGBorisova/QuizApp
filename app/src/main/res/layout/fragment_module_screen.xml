@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_xlarge"
             android:fontFamily="@font/dm_sans_bold"
-            android:text="Съдържание"
+            android:text="@string/content"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_header"
@@ -34,28 +34,5 @@
             android:layout_marginBottom="@dimen/margin_large"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtScreenTitle" />
-
-        <!--        <com.google.android.material.button.MaterialButton-->
-        <!--            android:id="@+id/btnStart"-->
-        <!--            style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
-        <!--            android:layout_width="@dimen/no_dimen"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginTop="@dimen/margin_large"-->
-        <!--            android:layout_marginBottom="@dimen/margin_large"-->
-        <!--            android:backgroundTint="@color/light_purple"-->
-        <!--            android:clickable="true"-->
-        <!--            android:enabled="false"-->
-        <!--            android:focusable="true"-->
-        <!--            android:paddingVertical="10dp"-->
-        <!--            android:text="Потвърди"-->
-        <!--            android:textAlignment="center"-->
-        <!--            android:textAllCaps="true"-->
-        <!--            android:textColor="@color/white"-->
-        <!--            android:textSize="18sp"-->
-        <!--            app:cornerRadius="@dimen/margin_medium"-->
-        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintWidth_percent="0.8" />-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
