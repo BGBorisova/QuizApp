@@ -71,18 +71,8 @@ class TestScreenFragment : Fragment(), TestItemListener {
         timer.cancel()
     }
 
-//    override fun onResume() {
-//        super.onResume()
-//        timer.start()
-//    }
-//
-//    override fun onPause() {
-//        super.onPause()
-//        timer.cancel()
-//    }
-
     private fun setCountdownTimer() {
-        timer = object : CountDownTimer(((args.time * 60000).toLong()), 1000) {
+        timer = object : CountDownTimer(((args.time.toLong() * 60000)), 1000) {
             override fun onTick(remaining: Long) {
                 timeInMills = remaining
                 val minute = (timeInMills / 1000) / 60
@@ -90,7 +80,20 @@ class TestScreenFragment : Fragment(), TestItemListener {
                 if (timeInMills < 60000) {
                     binding.txtTime.setTextColor(resources.getColor(android.R.color.holo_red_dark))
                 }
-                binding.txtTime.text = "$minute:$seconds"
+                when {
+                    minute < 10 && seconds < 10 -> {
+                        binding.txtTime.text = "0" + "$minute:" + "0" + "$seconds"
+                    }
+                    minute < 10 && seconds > 9 -> {
+                        binding.txtTime.text = "0" + "$minute:$seconds"
+                    }
+                    minute > 9 && seconds < 10 -> {
+                        binding.txtTime.text = "$minute:" + "0" + "$seconds"
+                    }
+                    else -> {
+                        binding.txtTime.text = "$minute:$seconds"
+                    }
+                }
             }
 
             override fun onFinish() {
