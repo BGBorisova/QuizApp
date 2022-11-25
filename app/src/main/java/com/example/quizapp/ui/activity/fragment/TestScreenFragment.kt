@@ -1,5 +1,6 @@
 package com.example.quizapp.ui.activity.fragment
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
@@ -10,7 +11,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.quizapp.data.Question
 import com.example.quizapp.data.QuestionGenerator
 import com.example.quizapp.databinding.FragmentTestScreenBinding
 import com.example.quizapp.ui.activity.adapter.TestAdapter
@@ -33,18 +33,47 @@ class TestScreenFragment : Fragment(), TestItemListener {
         binding.recyclerView.adapter = adapter
         openChosenTest()
         setCountdownTimer()
-        onButtonCheckClicked()
+        onButtonTakeClicked()
         return binding.root
     }
 
-    private fun onButtonCheckClicked() {
+    override fun onStart() {
+        super.onStart()
+        timer.start()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        timer.cancel()
+    }
+
+    private fun onButtonTakeClicked() {
         binding.btnTake.setOnClickListener {
-            //alertDialog
-            //if click yes show result
+            askUserToTakeTest()
             //if you want to check answers ->hide result screen and show them
             adapter.isButtonTakeClicked(true)
             adapter.notifyDataSetChanged()
         }
+    }
+
+    private fun askUserToTakeTest() {
+        AlertDialog.Builder(requireContext())
+            .setMessage("Сигурен ли си,че искаш да предадеш?")
+            // if the dialog is cancelable
+            .setCancelable(false)
+            .setPositiveButton("Да") { dialog, _ ->
+                openResultLayout()
+                dialog.dismiss()
+            }
+            .setNegativeButton("Не", null)
+            .create()
+            .show()
+    }
+
+    private fun openResultLayout() {
+        binding.txtTime.visibility = View.GONE
+        binding.testViewsParent.visibility = View.GONE
+        binding.scoreViews.visibility = View.VISIBLE
     }
 
     private fun setCountdownTimer() {
@@ -130,7 +159,7 @@ class TestScreenFragment : Fragment(), TestItemListener {
         Log.d("HHH", "${args.testId}")
     }
 
-    override fun onItemSelected(item: Question) {
-
+    override fun onFinalScoreFetched(score: Int) {
+        binding.txtScore.text = score.toString()
     }
 }

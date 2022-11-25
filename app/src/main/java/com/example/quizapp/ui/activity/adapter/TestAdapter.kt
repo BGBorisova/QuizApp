@@ -1,10 +1,10 @@
 package com.example.quizapp.ui.activity.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.quizapp.R
 import com.example.quizapp.data.Question
 import com.example.quizapp.databinding.TestItemBinding
 
@@ -18,6 +18,7 @@ class TestAdapter(private val testItemListener: TestItemListener) :
 
     lateinit var binding: TestItemBinding
     private val items = mutableListOf<Question>()
+    var score = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TestViewHolder {
         binding = TestItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -45,7 +46,7 @@ class TestAdapter(private val testItemListener: TestItemListener) :
 
     inner class TestViewHolder(
         itemView: View,
-        val binding: TestItemBinding,
+        private val binding: TestItemBinding,
     ) : RecyclerView.ViewHolder(itemView) {
         fun bind(question: Question) {
             binding.txtQuestion.text = (adapterPosition + 1).toString() + ". " + question.question
@@ -53,23 +54,45 @@ class TestAdapter(private val testItemListener: TestItemListener) :
             binding.txtAnswer2.text = question.answers[SECOND_ANSWER].text
             binding.txtAnswer3.text = question.answers[THIRD_ANSWER].text
             binding.txtAnswer4.text = question.answers[FORTH_ANSWER].text
-            if (isTakeClicked) {
-                //show correct and wrong answears
-            }
+//            if (isTakeClicked) {
+//                //show correct and wrong answears
+//            }
             binding.txtAnswer1.setOnClickListener {
+                if (question.answers[0].isCorrect) {
+                    score += 1
+                }
+            }
+            binding.txtAnswer2.setOnClickListener {
+                if (question.answers[1].isCorrect) {
+                    score += 1
+                }
+            }
+            binding.txtAnswer3.setOnClickListener {
 
-//                if (question.answers[question.answers[0].id].isCorrect) {
+                if (question.answers[2].isCorrect) {
+                    score += 1
+                }
+            }
+            binding.txtAnswer4.setOnClickListener {
+
+                if (question.answers[3].isCorrect) {
+                    score += 1
+                }
+            }
+            testItemListener.onFinalScoreFetched(score)
+            Log.d("HHH", "$score")
+        }
+    }
+//    if (question.answers[question.answers[0].id].isCorrect) {
 //                    binding.txtAnswer1.setBackgroundColor(itemView.resources.getColor(R.color.dark_orange))
 //                    binding.txtAnswer2.setBackgroundColor(itemView.resources.getColor(R.color.light_orange))
 //                    binding.txtAnswer3.setBackgroundColor(itemView.resources.getColor(R.color.light_orange))
 //                    binding.txtAnswer4.setBackgroundColor(itemView.resources.getColor(R.color.light_orange))
 //                }
-            }
-        }
-    }
 }
 
 interface TestItemListener {
-    fun onItemSelected(item: Question)
+    fun onFinalScoreFetched(score: Int)
 }
+
 
