@@ -24,6 +24,7 @@ class TestScreenFragment : Fragment(), TestItemListener {
     private var adapter = TestAdapter(this)
     private lateinit var timer: CountDownTimer
     private var timeInMills = 0L
+    var isColorized = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -34,6 +35,7 @@ class TestScreenFragment : Fragment(), TestItemListener {
         openChosenTest()
         setCountdownTimer()
         onButtonTakeClicked()
+        closeResultScreenAndCheckAnswers()
         return binding.root
     }
 
@@ -53,7 +55,6 @@ class TestScreenFragment : Fragment(), TestItemListener {
             askUserToTakeTest()
             //if you want to check answers ->hide result screen and show them
             adapter.isButtonTakeClicked(true)
-            adapter.notifyDataSetChanged()
         }
     }
 
@@ -72,6 +73,7 @@ class TestScreenFragment : Fragment(), TestItemListener {
     }
 
     private fun openResultLayout() {
+        isColorized = true
         binding.txtTime.visibility = View.GONE
         binding.testViewsParent.visibility = View.GONE
         binding.scoreViews.visibility = View.VISIBLE
@@ -163,5 +165,16 @@ class TestScreenFragment : Fragment(), TestItemListener {
 
     override fun onFinalScoreFetched(score: Int) {
         binding.scoreBoardLayout.txtFinalScore.text = score.toString()
+    }
+
+    override fun isReadyToColorizedAnswers(): Boolean {
+        return isColorized
+    }
+
+    private fun closeResultScreenAndCheckAnswers() {
+        binding.scoreBoardLayout.txtFinalScore.setOnClickListener {
+            binding.testViewsParent.visibility = View.VISIBLE
+            binding.scoreViews.visibility = View.GONE
+        }
     }
 }

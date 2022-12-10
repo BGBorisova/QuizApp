@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quizapp.R
+import com.example.quizapp.data.Answer
 import com.example.quizapp.data.Question
 import com.example.quizapp.databinding.TestItemBinding
 
@@ -62,7 +63,21 @@ class TestAdapter(
             binding.txtAnswer4.text = question.answers[FORTH_ANSWER].text
 
             val answers = question.answers
-            if (question.answers[0].isSelected) {
+            toggleAnswers(answers)
+            if (testItemListener.isReadyToColorizedAnswers()) {
+                setFirstAnswerBackgroundAfterSubmit(answers)
+                setSecondAnswerBackgroundAfterSubmit(answers)
+                setThirdAnswerBackgroundAfterSubmit(answers)
+                setFourthAnswerBackgroundAfterSubmit(answers)
+            }
+
+            setAnswersClickListeners(answers)
+            testItemListener.onFinalScoreFetched(points)
+            Log.d("HHH", "score $points")
+        }
+
+        private fun toggleAnswers(answers: List<Answer>) {
+            if (answers[0].isSelected) {
                 binding.txtAnswer1.background = ContextCompat.getDrawable(
                     binding.root.context,
                     R.drawable.background_selected_answer
@@ -73,7 +88,7 @@ class TestAdapter(
                     R.drawable.background_unselected_answer
                 )
             }
-            if (question.answers[1].isSelected) {
+            if (answers[1].isSelected) {
                 binding.txtAnswer2.background = ContextCompat.getDrawable(
                     binding.root.context,
                     R.drawable.background_selected_answer
@@ -84,7 +99,7 @@ class TestAdapter(
                     R.drawable.background_unselected_answer
                 )
             }
-            if (question.answers[2].isSelected) {
+            if (answers[2].isSelected) {
                 binding.txtAnswer3.background = ContextCompat.getDrawable(
                     binding.root.context,
                     R.drawable.background_selected_answer
@@ -95,7 +110,7 @@ class TestAdapter(
                     R.drawable.background_unselected_answer
                 )
             }
-            if (question.answers[3].isSelected) {
+            if (answers[3].isSelected) {
                 binding.txtAnswer4.background = ContextCompat.getDrawable(
                     binding.root.context,
                     R.drawable.background_selected_answer
@@ -106,6 +121,9 @@ class TestAdapter(
                     R.drawable.background_unselected_answer
                 )
             }
+        }
+
+        private fun setAnswersClickListeners(answers: List<Answer>) {
             binding.txtAnswer1.setOnClickListener {
                 answers[0].isSelected = !answers[0].isSelected
 
@@ -120,7 +138,6 @@ class TestAdapter(
                 if (answers[1].isCorrect && answers[1].isSelected) {
                     points += 1
                 }
-
                 notifyDataSetChanged()
             }
             binding.txtAnswer3.setOnClickListener {
@@ -139,28 +156,85 @@ class TestAdapter(
 
                 notifyDataSetChanged()
             }
-            testItemListener.onFinalScoreFetched(points)
-            Log.d("HHH", "score $points")
         }
 
-//        private fun setSelectedItemBackground(itemView: View, position: Int, question: Question) {
-//            if (question.answers[position].isSelected) {
-//                itemView.background = ContextCompat.getDrawable(
-//                    itemView.context,
-//                    R.drawable.background_selected_answer
-//                )
-//            } else {
-//                itemView.background = ContextCompat.getDrawable(
-//                    itemView.context,
-//                    R.drawable.background_unselected_answer
-//                )
-//            }
-//        }
+        private fun setFirstAnswerBackgroundAfterSubmit(answers: List<Answer>) {
+            if (answers[0].isSelected && answers[0].isCorrect)
+                binding.txtAnswer1.background = ContextCompat.getDrawable(
+                    binding.root.context,
+                    R.drawable.background_correct_selected_answer
+                )
+            else if (answers[0].isSelected && !answers[0].isCorrect)
+                binding.txtAnswer1.background = ContextCompat.getDrawable(
+                    binding.root.context,
+                    R.drawable.background_wrong_selected_answer
+                )
+            else if (!answers[0].isSelected && answers[0].isCorrect)
+                binding.txtAnswer1.background = ContextCompat.getDrawable(
+                    binding.root.context,
+                    R.drawable.background_correct_unselected_answer
+                )
+        }
+
+        private fun setSecondAnswerBackgroundAfterSubmit(answers: List<Answer>) {
+            if (answers[1].isSelected && answers[1].isCorrect)
+                binding.txtAnswer2.background = ContextCompat.getDrawable(
+                    binding.root.context,
+                    R.drawable.background_correct_selected_answer
+                )
+            else if (answers[1].isSelected && !answers[1].isCorrect)
+                binding.txtAnswer2.background = ContextCompat.getDrawable(
+                    binding.root.context,
+                    R.drawable.background_wrong_selected_answer
+                )
+            else if (!answers[1].isSelected && answers[1].isCorrect)
+                binding.txtAnswer2.background = ContextCompat.getDrawable(
+                    binding.root.context,
+                    R.drawable.background_correct_unselected_answer
+                )
+        }
+
+        private fun setThirdAnswerBackgroundAfterSubmit(answers: List<Answer>) {
+            if (answers[2].isSelected && answers[2].isCorrect)
+                binding.txtAnswer3.background = ContextCompat.getDrawable(
+                    binding.root.context,
+                    R.drawable.background_correct_selected_answer
+                )
+            else if (answers[2].isSelected && !answers[2].isCorrect)
+                binding.txtAnswer3.background = ContextCompat.getDrawable(
+                    binding.root.context,
+                    R.drawable.background_wrong_selected_answer
+                )
+            else if (!answers[2].isSelected && answers[2].isCorrect)
+                binding.txtAnswer3.background = ContextCompat.getDrawable(
+                    binding.root.context,
+                    R.drawable.background_correct_unselected_answer
+                )
+        }
+
+        private fun setFourthAnswerBackgroundAfterSubmit(answers: List<Answer>) {
+            if (answers[3].isSelected && answers[3].isCorrect)
+                binding.txtAnswer4.background = ContextCompat.getDrawable(
+                    binding.root.context,
+                    R.drawable.background_correct_selected_answer
+                )
+            else if (answers[3].isSelected && !answers[3].isCorrect)
+                binding.txtAnswer4.background = ContextCompat.getDrawable(
+                    binding.root.context,
+                    R.drawable.background_wrong_selected_answer
+                )
+            else if (!answers[3].isSelected && answers[3].isCorrect)
+                binding.txtAnswer4.background = ContextCompat.getDrawable(
+                    binding.root.context,
+                    R.drawable.background_correct_unselected_answer
+                )
+        }
     }
 }
 
 interface TestItemListener {
     fun onFinalScoreFetched(score: Int)
+    fun isReadyToColorizedAnswers(): Boolean
 }
 
 
