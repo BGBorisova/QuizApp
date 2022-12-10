@@ -14,20 +14,20 @@ private const val FIRST_ANSWER = 0
 private const val SECOND_ANSWER = 1
 private const val THIRD_ANSWER = 2
 private const val FORTH_ANSWER = 3
+private const val START_POINTS = 0
 
 class TestAdapter(
     private val testItemListener: TestItemListener,
-    private var score: Int = 0
 ) :
     RecyclerView.Adapter<TestAdapter.TestViewHolder>() {
 
     lateinit var binding: TestItemBinding
     private val items = mutableListOf<Question>()
-
+    private var points: Int = START_POINTS
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TestViewHolder {
         binding = TestItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return TestViewHolder(binding.root, binding, score)
+        return TestViewHolder(binding.root, binding)
     }
 
     override fun onBindViewHolder(holder: TestViewHolder, position: Int) {
@@ -52,7 +52,6 @@ class TestAdapter(
     inner class TestViewHolder(
         itemView: View,
         private val binding: TestItemBinding,
-        private var points: Int
     ) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(question: Question) {
@@ -110,7 +109,7 @@ class TestAdapter(
             binding.txtAnswer1.setOnClickListener {
                 answers[0].isSelected = !answers[0].isSelected
 
-                if (question.answers[0].isCorrect) {
+                if (answers[0].isCorrect && answers[0].isSelected) {
                     points += 1
                 }
 
@@ -118,7 +117,7 @@ class TestAdapter(
             }
             binding.txtAnswer2.setOnClickListener {
                 answers[1].isSelected = !answers[1].isSelected
-                if (question.answers[1].isCorrect) {
+                if (answers[1].isCorrect && answers[1].isSelected) {
                     points += 1
                 }
 
@@ -126,7 +125,7 @@ class TestAdapter(
             }
             binding.txtAnswer3.setOnClickListener {
                 answers[2].isSelected = !answers[2].isSelected
-                if (question.answers[2].isCorrect) {
+                if (answers[2].isCorrect && answers[2].isSelected) {
                     points += 1
                 }
 
@@ -134,14 +133,14 @@ class TestAdapter(
             }
             binding.txtAnswer4.setOnClickListener {
                 answers[3].isSelected = !answers[3].isSelected
-                if (question.answers[3].isCorrect) {
+                if (answers[3].isCorrect && answers[3].isSelected) {
                     points += 1
                 }
 
                 notifyDataSetChanged()
             }
-            testItemListener.onFinalScoreFetched(score)
-            Log.d("HHH", "score $score")
+            testItemListener.onFinalScoreFetched(points)
+            Log.d("HHH", "score $points")
         }
 
 //        private fun setSelectedItemBackground(itemView: View, position: Int, question: Question) {

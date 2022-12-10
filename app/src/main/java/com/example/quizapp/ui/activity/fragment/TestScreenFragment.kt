@@ -49,6 +49,7 @@ class TestScreenFragment : Fragment(), TestItemListener {
 
     private fun onButtonTakeClicked() {
         binding.btnTake.setOnClickListener {
+
             askUserToTakeTest()
             //if you want to check answers ->hide result screen and show them
             adapter.isButtonTakeClicked(true)
@@ -161,6 +162,6 @@ class TestScreenFragment : Fragment(), TestItemListener {
     }
 
     override fun onFinalScoreFetched(score: Int) {
-        binding.txtScore.text = score.toString()
+        binding.scoreBoardLayout.txtFinalScore.text = score.toString()
     }
 }
