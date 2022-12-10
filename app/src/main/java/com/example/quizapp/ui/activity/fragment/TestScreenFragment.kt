@@ -104,6 +104,7 @@ class TestScreenFragment : Fragment(), TestItemListener {
             override fun onFinish() {
                 //save score
                 //go to score screen with result
+                openResultLayout()
                 Toast.makeText(requireContext(), "Cancel", Toast.LENGTH_SHORT).show()
             }
         }
