@@ -26,5 +26,10 @@
     <string name="fifteen">15</string>
     <string name="ten">10</string>
     <string name="content">Съдържание</string>
+    <string name="yes">Да</string>
+    <string name="no">Не</string>
+    <string name="are_you_submit">Сигурен ли си,че искаш да предадеш?</string>
+    <string name="check">Провери</string>
+    <string name="exit">Излез</string>
 
 </resources>

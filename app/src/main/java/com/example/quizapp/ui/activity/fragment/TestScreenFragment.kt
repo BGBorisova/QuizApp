@@ -3,14 +3,16 @@ package com.example.quizapp.ui.activity.fragment
 import android.app.AlertDialog
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.quizapp.R
 import com.example.quizapp.data.QuestionGenerator
 import com.example.quizapp.databinding.FragmentTestScreenBinding
 import com.example.quizapp.ui.activity.adapter.TestAdapter
@@ -32,10 +34,11 @@ class TestScreenFragment : Fragment(), TestItemListener {
         binding = FragmentTestScreenBinding.inflate(inflater, container, false)
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.adapter = adapter
-        openChosenTest()
         setCountdownTimer()
+        openChosenTest()
         onButtonTakeClicked()
-        closeResultScreenAndCheckAnswers()
+        onButtonCheckClicked()
+        onButtonExitClicked()
         return binding.root
     }
 
@@ -49,36 +52,6 @@ class TestScreenFragment : Fragment(), TestItemListener {
         timer.cancel()
     }
 
-    private fun onButtonTakeClicked() {
-        binding.btnTake.setOnClickListener {
-
-            askUserToTakeTest()
-            //if you want to check answers ->hide result screen and show them
-            adapter.isButtonTakeClicked(true)
-        }
-    }
-
-    private fun askUserToTakeTest() {
-        AlertDialog.Builder(requireContext())
-            .setMessage("Сигурен ли си,че искаш да предадеш?")
-            // if the dialog is cancelable
-            .setCancelable(false)
-            .setPositiveButton("Да") { dialog, _ ->
-                openResultLayout()
-                dialog.dismiss()
-            }
-            .setNegativeButton("Не", null)
-            .create()
-            .show()
-    }
-
-    private fun openResultLayout() {
-        isColorized = true
-        binding.txtTime.visibility = View.GONE
-        binding.testViewsParent.visibility = View.GONE
-        binding.scoreViews.visibility = View.VISIBLE
-    }
-
     private fun setCountdownTimer() {
         timer = object : CountDownTimer(((args.time.toLong() * 60000)), 1000) {
             override fun onTick(remaining: Long) {
@@ -86,16 +59,21 @@ class TestScreenFragment : Fragment(), TestItemListener {
                 val minute = (timeInMills / 1000) / 60
                 val seconds = (timeInMills / 1000) % 60
                 if (timeInMills < 60000) {
-                    binding.txtTime.setTextColor(resources.getColor(android.R.color.holo_red_dark))
+                    binding.txtTime.setTextColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.red
+                        )
+                    )
                 }
                 when {
                     minute < 10 && seconds < 10 -> {
                         binding.txtTime.text = "0" + "$minute:" + "0" + "$seconds"
                     }
-                    minute < 10 && seconds > 9 -> {
+                    minute < 10 -> {
                         binding.txtTime.text = "0" + "$minute:$seconds"
                     }
-                    minute > 9 && seconds < 10 -> {
+                    seconds < 10 -> {
                         binding.txtTime.text = "$minute:" + "0" + "$seconds"
                     }
                     else -> {
@@ -160,21 +138,57 @@ class TestScreenFragment : Fragment(), TestItemListener {
                 )
             }
         }
-        Log.d("HHH", "${args.testId}")
     }
 
-    override fun onFinalScoreFetched(score: Int) {
-        binding.scoreBoardLayout.txtFinalScore.text = score.toString()
+    override fun isReadyToColorizedAnswers() = isColorized
+
+    private fun askUserToTakeTest() =
+        AlertDialog.Builder(requireContext())
+            .setMessage(getString(R.string.are_you_submit))
+            // if the dialog is cancelable
+            .setCancelable(false)
+            .setPositiveButton(getString(R.string.yes)) { dialog, _ ->
+                openResultLayout()
+                dialog.dismiss()
+            }
+            .setNegativeButton(getString(R.string.no), null)
+            .create()
+            .show()
+
+    private fun openResultLayout() {
+        isColorized = true
+        binding.txtTime.visibility = View.GONE
+        binding.testViewsParent.visibility = View.GONE
+        binding.scoreViews.visibility = View.VISIBLE
     }
 
-    override fun isReadyToColorizedAnswers(): Boolean {
-        return isColorized
-    }
+    private fun onButtonTakeClicked() {
+        binding.btnSubmitTest.setOnClickListener {
+            val points = adapter.getItems().flatMap { it.answers }
+                .filter { it.isSelected && it.isCorrect }.size
 
-    private fun closeResultScreenAndCheckAnswers() {
-        binding.scoreBoardLayout.txtFinalScore.setOnClickListener {
-            binding.testViewsParent.visibility = View.VISIBLE
-            binding.scoreViews.visibility = View.GONE
+//            binding.scoreBoardLayout.txtFinalScore.text =
+//                points.toString() + "/" + args.numberOfQuestions.toString()
+//            Оценка=2+(4*верни отговори)/(брой въпроси)
+            binding.scoreBoardLayout.txtFinalScore.text = (2 + (4 * points) / (args.numberOfQuestions).toFloat()).toString()
+            askUserToTakeTest()
+            adapter.isButtonTakeClicked(true)
         }
     }
+
+    private fun onButtonCheckClicked() =
+        binding.scoreBoardLayout.btnCheck.setOnClickListener {
+            binding.testViewsParent.visibility = View.VISIBLE
+            binding.scoreViews.visibility = View.GONE
+            binding.imgTimer.visibility = View.GONE
+            binding.btnSubmitTest.visibility = View.GONE
+            adapter.notifyDataSetChanged()
+        }
+
+    private fun onButtonExitClicked() =
+        binding.scoreBoardLayout.btnExit.setOnClickListener {
+            findNavController().navigate(
+                TestScreenFragmentDirections.actionTestScreenFragmentToModuleScreenFragment()
+            )
+        }
 }

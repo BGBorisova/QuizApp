@@ -84,19 +84,19 @@ class QuestionGenerator {
             )
         ),
         Question(
-            id = 1, "Посочи начините за описание на алгоритмите:", listOf(
-                Answer(1, "словесно", true),
-                Answer(2, "чрез езици за програмиране ", true),
-                Answer(3, "чрез блок-схеми", true),
-                Answer(4, "чрез жестове", false)
+            id = 1, "Кое от посочените не е начин за описание на алгоритми:", listOf(
+                Answer(1, "словесно", false),
+                Answer(2, "чрез езици за програмиране ", false),
+                Answer(3, "чрез блок-схеми", false),
+                Answer(4, "чрез жестове", true)
             )
         ),
         Question(
             id = 1,
             "Ако в един алгоритъм едно или повече действия се повтарят, той се нарича:",
             listOf(
-                Answer(1, "Линеен", true),
-                Answer(2, "Последователен", true),
+                Answer(1, "Линеен", false),
+                Answer(2, "Последователен", false),
                 Answer(3, "Цикличен", true),
                 Answer(4, "Повтарящ ", false)
             )
@@ -134,16 +134,16 @@ class QuestionGenerator {
             )
         ),
         Question(
-            id = 1, "Кои са двата стила на програмиране?", listOf(
-                Answer(1, "Императивен", true),
+            id = 1, "Кое от изброените е стил на програмиране?", listOf(
+                Answer(1, "Импресивен", false),
                 Answer(2, "Декларативен ", true),
-                Answer(3, "Транзитивен ", false),
+                Answer(3, "Транзитивен", false),
                 Answer(4, "Интерпретивен", false)
             )
         ),
         Question(
-            id = 1, "Кои от изброените термини са видове транслатори?", listOf(
-                Answer(1, "Компилатор", true),
+            id = 1, "Кое от изброените е вид транслатор?", listOf(
+                Answer(1, "Комутатор", false),
                 Answer(2, "Итератор ", false),
                 Answer(3, "Интерпретатор ", true),
                 Answer(4, "Модератор", false)
@@ -189,21 +189,10 @@ class QuestionGenerator {
             id = 1,
             "При преобразуване на числа от осмична в двоична БС всяка цифра от осмичната БС (без първата) се представя в три позиции. Кои твърдения са верни?",
             listOf(
-                Answer(
-                    1,
-                    "Ако цифрата в осмична БС е по-малка от 2, се добавят две водещи нули",
-                    true
-                ),
+                Answer(1, "Ако цифрата в осмична БС е по-малка от 2, се добавят две водещи нули", true),
                 Answer(2, "Само при цифрата 4 не се добавят водещи нули", false),
-                Answer(
-                    3,
-                    "Ако цифрата в осмична БС е по-голяма или равна на 3, се добавят две водещи нули",
-                    false
-                ),
-                Answer(
-                    4,
-                    "Ако цифрата в осмична БС е по-голяма от 3, не се добавят водещи нули",
-                    true
+                Answer(3, "Ако цифрата в осмична БС е по-голяма или равна на 3, се добавят две водещи нули", false),
+                Answer(4, "Ако цифрата в осмична БС е по-голяма от 1, не се добавят водещи нули", false
                 )
             )
         ),
@@ -237,19 +226,19 @@ class QuestionGenerator {
             )
         ),
         Question(
-            id = 2, "Посочи елементите на IDE:", listOf(
-                Answer(1, "Дебъгер (Debugger)", true),
-                Answer(2, "Набор от папки", false),
-                Answer(3, "Компилатор", true),
-                Answer(4, "Директория", false)
+            id = 2, "Кое от посочените не е елемент на IDE:", listOf(
+                Answer(1, "Дебъгер (Debugger)", false),
+                Answer(2, "Набор от папки", true),
+                Answer(3, "Компилатор", false),
+                Answer(4, "Интерпретатор", false)
             )
         ),
         Question(
-            id = 2, "Посочи средите за програмиране:", listOf(
-                Answer(1, "IntelliJ IDEA", true),
-                Answer(2, "Eclipse", true),
-                Answer(3, "Oracle", false),
-                Answer(4, "Visual Studio", true)
+            id = 2, "Кое от изброените не е среда за програмиране:", listOf(
+                Answer(1, "IntelliJ IDEA", false),
+                Answer(2, "Eclipse", false),
+                Answer(3, "Oracle", true),
+                Answer(4, "Visual Studio", false)
             )
         ),
         Question(
@@ -294,11 +283,11 @@ class QuestionGenerator {
             )
         ),
         Question(
-            id = 2, "Кои елементи са част от IDE Visual Studio 2017 Community за езика C#?", listOf(
+            id = 2, "Кой елемент е част от IDE Visual Studio 2017 Community за езика C#?", listOf(
                 Answer(1, "Свързващ редактор", true),
                 Answer(2, "Файлов редактор", false),
                 Answer(3, "Графичен редактор", false),
-                Answer(4, "Текстов редактор", true)
+                Answer(4, "Визуален редактор", false)
             )
         ),
         Question(
@@ -365,16 +354,16 @@ class QuestionGenerator {
         ),
         Question(
             id = 2,
-            "Посочи дейностите, които се извършват по време на проектирането на компютърна програма: ",
+            "Посочи дейността, които не се извършва по време на проектирането на компютърна програма: ",
             listOf(
                 Answer(
                     1,
                     "Определяне под каква форма да бъде представена програмата на потребителя",
-                    false
+                    true
                 ),
-                Answer(2, "Разработване на алгоритъм за решаване на задачата", true),
-                Answer(3, "Създаване на дизайн на графичния потребителски интерфейс", true),
-                Answer(4, "Създаване на математически модел на задачата", true)
+                Answer(2, "Разработване на алгоритъм за решаване на задачата", false),
+                Answer(3, "Създаване на дизайн на графичния потребителски интерфейс", false),
+                Answer(4, "Създаване на математически модел на задачата", false)
             )
         ),
         Question(
@@ -415,9 +404,9 @@ class QuestionGenerator {
 
     fun getThirdModuleQuestions() = listOf(
         Question(
-            id = 3, "Кои от изброените езици за програмиране са типизирани?", listOf(
+            id = 3, "Кой от изброените езици за програмиране е типизиран?", listOf(
                 Answer(1, "C#", true),
-                Answer(2, "Java", true),
+                Answer(2, "CSS", false),
                 Answer(3, "JavaScript", false),
                 Answer(4, "Python", false)
             )
@@ -431,11 +420,11 @@ class QuestionGenerator {
             )
         ),
         Question(
-            id = 3, "Типът данни винаги определя:", listOf(
-                Answer(1, "Как да се именуват променливи и константи", false),
-                Answer(2, "Допустимите операции", true),
-                Answer(3, "Множеството от допустими стойности", true),
-                Answer(4, "Колко памет да се отдели за дадена компонента", true)
+            id = 3, "Типът данни не определя определя:", listOf(
+                Answer(1, "Как да се именуват променливи и константи", true),
+                Answer(2, "Допустимите операции", false),
+                Answer(3, "Множеството от допустими стойности", false),
+                Answer(4, "Колко памет да се отдели за дадена компонента", false)
             )
         ),
         Question(
@@ -458,7 +447,7 @@ class QuestionGenerator {
             id = 3, "Каква е крaйната стойност на променливата name в следния пример:\n" +
                     "String name = \"Ani\";\n" +
                     "name = \"\";\n", listOf(
-                Answer(1, "0", true),
+                Answer(1, "0", false),
                 Answer(2, "Празен стринг", true),
                 Answer(3, "Няма никаква стойност", false),
                 Answer(4, "Ani", false)
@@ -469,7 +458,7 @@ class QuestionGenerator {
                 Answer(1, "A = 17%5;", true),
                 Answer(2, "A = 2/2;", false),
                 Answer(3, "A = 21%10;", false),
-                Answer(4, "A = 11/4;", true)
+                Answer(4, "A = 11/3;", false)
             )
         ),
         Question(
@@ -478,7 +467,7 @@ class QuestionGenerator {
             listOf(
                 Answer(1, "c+=1;", true),
                 Answer(2, "c=c+11/2;", false),
-                Answer(3, "++c", true),
+                Answer(3, "c++", false),
                 Answer(4, "c*=1;", false)
             )
         ),
@@ -503,21 +492,21 @@ class QuestionGenerator {
             )
         ),
         Question(
-            id = 3, "Кои от изброените типове са реални?", listOf(
+            id = 3, "Кой от изброените типове е реален?", listOf(
                 Answer(1, "String", false),
                 Answer(2, "Float", true),
-                Answer(3, "Double", true),
+                Answer(3, "boolean", false),
                 Answer(4, "Byte", false)
             )
         ),
         Question(
             id = 3,
-            "Кои от изброените реални числа са записани правилно според правилата в език за програмиране Java?",
+            "Кое от изброените реални числа не е записано правилно според правилата в език за програмиране Java?",
             listOf(
-                Answer(1, "1,586F", false),
-                Answer(2, ".548", true),
-                Answer(3, "35.73f", true),
-                Answer(4, "0.425458e+2d", true)
+                Answer(1, "1,586F", true),
+                Answer(2, ".548", false),
+                Answer(3, "35.73f", false),
+                Answer(4, "0.425458e+2d", false)
             )
         ),
         Question(
@@ -545,7 +534,7 @@ class QuestionGenerator {
             id = 3, "В кои изрази А е отрицателно число?", listOf(
                 Answer(1, "А=Math.Round(-0.062);", false),
                 Answer(2, "А=Math.Floor(-0.062);", true),
-                Answer(3, "А=Math.Pow(-0.62, 3);", true),
+                Answer(3, "А=Math.Pow(-0.62, 4);", false),
                 Answer(4, "А=Math.Ceiling(-0.62);", false)
             )
         ),
@@ -553,11 +542,11 @@ class QuestionGenerator {
             id = 3, "Променливи са декларирани по следния начин:\n" +
                     "float price;\n" +
                     "string s=\"26.18\";\n" +
-                    "Кои програмни кодове са написани НЕПРАВИЛНО?\n", listOf(
-                Answer(1, "price = Convert.ToFloat (s);", true),
-                Answer(2, "price = float.Parse (s);", false),
-                Answer(3, "price = float.ToParse (s);", true),
-                Answer(4, "price = Convert.ToDouble (s);", false)
+                    "Кой програмен код е написан ПРАВИЛНО?\n", listOf(
+                Answer(1, "price = Convert.ToFloat (s);", false),
+                Answer(2, "price = float.Parse (s);", true),
+                Answer(3, "price = float.ToParse (s);", false),
+                Answer(4, "price = Convert.ToParse (s);", false)
             )
         ),
         Question(
@@ -614,12 +603,12 @@ class QuestionGenerator {
     fun getFourthModuleQuestions() = listOf(
         Question(
             id = 4,
-            "Кои от изброените понятия са конвениции за именуване на променливи и константи?",
+            "Коe от изброените понятия не е конвениция за именуване на променливи и константи?",
             listOf(
-                Answer(1, "camelNase ", false),
-                Answer(2, "camelCase", true),
-                Answer(3, "Bulgarian notation", false),
-                Answer(4, "Hungarian notation", true)
+                Answer(1, "PascalCase", false),
+                Answer(2, "camelCase", false),
+                Answer(3, "Bulgarian notation", true),
+                Answer(4, "Hungarian notation", false)
             )
         ),
         Question(
@@ -633,11 +622,11 @@ class QuestionGenerator {
             )
         ),
         Question(
-            id = 4, "Пояснителните коментари в Java са два вида. Посочи кои са те.?", listOf(
-                Answer(1, "Еднокомпонентни", false),
-                Answer(2, "Многоредови", true),
-                Answer(3, "Едноредови", true),
-                Answer(4, "Многокомпонентни", false)
+            id = 4, "Пояснителните коментари в Java са два вида. Посочи кои са те:", listOf(
+                Answer(1, "Еднокомпонентни и многокомпонентни", false),
+                Answer(2, "Еднокомпонентни и многоредови", false),
+                Answer(3, "Едноредови и многоредови", true),
+                Answer(4, "Многокомпонентни и многоредови", false)
             )
         ),
         Question(
@@ -663,12 +652,12 @@ class QuestionGenerator {
         ),
         Question(
             id = 4,
-            "Кои от изброените понятия са конвениции за именуване на променливи и константи?",
+            "Кой метод се използва за добавяне на текст върху изображение в Java?",
             listOf(
-                Answer(1, "camelNase ", false),
-                Answer(2, "camelCase", true),
-                Answer(3, "Bulgarian notation", false),
-                Answer(4, "Hungarian notation", true)
+                Answer(1, "drawString ", true),
+                Answer(2, "importString", false),
+                Answer(3, "inputString", false),
+                Answer(4, "writeString", false)
             )
         ),
         Question(
@@ -693,7 +682,7 @@ class QuestionGenerator {
             id = 4, "Кои изрази имат стойност true?", listOf(
                 Answer(1, "boolean a = true || !false; ", false),
                 Answer(2, "boolean a = true && false;", false),
-                Answer(3, "boolean a = !(true && false);", true),
+                Answer(3, "boolean a = !(true && !false);", false),
                 Answer(4, "boolean a = !true || false;", true)
             )
         ),
@@ -703,39 +692,39 @@ class QuestionGenerator {
                     "int a = 3, b = 5;\n" +
                     "boolean c = (a != b) && !(a>b) && (a==b);\n",
             listOf(
-                Answer(1, "camelNase ", false),
-                Answer(2, "camelCase", true),
-                Answer(3, "Bulgarian notation", false),
-                Answer(4, "Hungarian notation", true)
+                Answer(1, "true ", false),
+                Answer(2, "false", true),
+                Answer(3, "c = 7 ", false),
+                Answer(4, "не може да се определи", false)
             )
         ),
         Question(
             id = 4,
-            "Кои от изброените понятия са конвениции за именуване на променливи и константи?",
+            "Как може да се променя височината на текстово поле (textBox) в приложение с графичен интерфейс на C#?",
             listOf(
-                Answer(1, "Не може да се определи ", false),
-                Answer(2, "c = 7 ", false),
-                Answer(3, "True", false),
-                Answer(4, "False", true)
+                Answer(1, "По нито един от посочените начини", false),
+                Answer(2, "Чрез промяна размера (size) на шрифта", true),
+                Answer(3, "Чрез друг параметър (property) на текстовата кутия", false),
+                Answer(4, "Чрез промяна размера (size.high) на самата текстова кутия", false)
             )
         ),
         Question(
             id = 4,
-            "Кои са формите на условен оператор?", listOf(
-                Answer(1, "Съкратена форма ", false),
-                Answer(2, "Кратка форма", true),
-                Answer(3, "Разширена форма", false),
-                Answer(4, "Пълна форма", true)
+            "Формите на условен оператор могът да бъдат?", listOf(
+                Answer(1, "Съкратена и разширена форма ", false),
+                Answer(2, "Пълна и кратка форма", true),
+                Answer(3, "Няма ограничение", false),
+                Answer(4, "Подбробна форма", false)
             )
         ),
         Question(
             id = 4,
-            "Кои са запазените ключови думи, използвани при пълната форма на условен оператор?",
+            " От изброените ключови думи запазени при използване на пълната форма на условен оператор?",
             listOf(
-                Answer(1, "if ", true),
-                Answer(2, "then", false),
-                Answer(3, "else", true),
-                Answer(4, "ellse", false)
+                Answer(1, "if - else", true),
+                Answer(2, "when", false),
+                Answer(3, "do - while", false),
+                Answer(4, "for", false)
             )
         ),
         Question(
@@ -955,7 +944,7 @@ class QuestionGenerator {
                     "Цикълът, управляван от брояч, може да не се изпълни нито веднъж ",
                     true
                 ),
-                Answer(2, "Цикълът се изпълнява, докато условието е вярно", true),
+                Answer(2, "Цикълът НЕ може да бъде безкраен", false),
                 Answer(
                     3,
                     "Запазената ключова дума за цикъл, управляван от брояч, е while",
@@ -1064,10 +1053,10 @@ class QuestionGenerator {
         ),
         Question(
             id = 5,
-            "За да започнеш да работиш с текстов файл в Java, трябва да добавиш две библиотеки. Кои са те?",
+            "За да започнеш да работиш с текстов файл в Java, трябва да добавиш две библиотеки. Едната от тях е?",
             listOf(
                 Answer(1, "Scanner ", true),
-                Answer(2, "File", true),
+                Answer(2, "Doc", true),
                 Answer(3, "Dox", false),
                 Answer(4, "NewFile", false)
             )
@@ -1224,9 +1213,9 @@ class QuestionGenerator {
         Question(
             id = 6, "Кои елементи се означават с определението екстремални?", listOf(
                 Answer(1, "Максималните по позиция", false),
-                Answer(2, "Минималните по стойност", true),
+                Answer(2, "Минималните и максималните по стойност", true),
                 Answer(3, "Минималните по позиция", false),
-                Answer(4, "Максималните по стойност", true)
+                Answer(4, "Нито едно от изброените", false)
             )
         ),
         Question(
@@ -1244,8 +1233,8 @@ class QuestionGenerator {
                 Answer(3, "Минимален елемент може да няма в масив", false),
                 Answer(
                     4,
-                    "Минималният елемент може да се среща повече от един път в масив",
-                    true
+                    "Минималният елемент не може да се среща повече от един път в масив",
+                    false
                 )
             )
         ),
@@ -1260,22 +1249,22 @@ class QuestionGenerator {
             )
         ),
         Question(
-            id = 6, "Посочи верните твърдения:", listOf(
-                Answer(1, "Обхождане на масив може да се направи и с цикъл while", true),
+            id = 6, "Посочи грешното твърдение:", listOf(
+                Answer(1, "Обхождане на масив може да се направи и с цикъл while", false),
                 Answer(
                     2,
                     "В един масив може да няма елементи, отговарящи на дадено условие",
-                    true
+                    false
                 ),
                 Answer(
                     3,
                     "В един масив може да има няколко елемента, отговарящи на дадено условие",
-                    true
+                    false
                 ),
                 Answer(
                     4,
                     "В един масив винаги има само един елемент, отговарящ на дадено условие",
-                    false
+                    true
                 )
             )
         ),
@@ -1285,8 +1274,8 @@ class QuestionGenerator {
             listOf(
                 Answer(1, "Не е определена ", false),
                 Answer(2, "-1", false),
-                Answer(3, "1", true),
-                Answer(4, "0", true)
+                Answer(3, "0 или 1", true),
+                Answer(4, "1++", false)
             )
         ),
         Question(
@@ -1295,9 +1284,9 @@ class QuestionGenerator {
                     "  if (name[i]==\"Mary\" || name[i]==\"Ana\") Console.WriteLine(name[i]);\n" +
                     "Кои имена на приятелки ще бъдат отпечатани?\n", listOf(
                 Answer(1, "MaryAna", false),
-                Answer(2, "Ana", true),
+                Answer(2, "Mary", false),
                 Answer(3, "Ana Mary ", false),
-                Answer(4, "Mary ", true)
+                Answer(4, "Mary и Ana ", true)
             )
         ),
         Question(
