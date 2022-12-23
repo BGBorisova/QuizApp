@@ -6,7 +6,6 @@ import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -18,6 +17,9 @@ import com.example.quizapp.databinding.FragmentTestScreenBinding
 import com.example.quizapp.ui.activity.adapter.TestAdapter
 import com.example.quizapp.ui.activity.adapter.TestItemListener
 
+private const val ONE_MINUTE_IN_MILLIS = 60000
+private const val TEN_MINUTES = 10
+private const val TEN_SECОNDS = 10
 
 class TestScreenFragment : Fragment(), TestItemListener {
 
@@ -53,12 +55,12 @@ class TestScreenFragment : Fragment(), TestItemListener {
     }
 
     private fun setCountdownTimer() {
-        timer = object : CountDownTimer(((args.time.toLong() * 60000)), 1000) {
+        timer = object : CountDownTimer(((args.time.toLong() * ONE_MINUTE_IN_MILLIS)), 1000) {
             override fun onTick(remaining: Long) {
                 timeInMills = remaining
                 val minute = (timeInMills / 1000) / 60
                 val seconds = (timeInMills / 1000) % 60
-                if (timeInMills < 60000) {
+                if (timeInMills < ONE_MINUTE_IN_MILLIS) {
                     binding.txtTime.setTextColor(
                         ContextCompat.getColor(
                             requireContext(),
@@ -67,13 +69,13 @@ class TestScreenFragment : Fragment(), TestItemListener {
                     )
                 }
                 when {
-                    minute < 10 && seconds < 10 -> {
+                    minute < TEN_MINUTES && seconds < TEN_SECОNDS -> {
                         binding.txtTime.text = "0" + "$minute:" + "0" + "$seconds"
                     }
-                    minute < 10 -> {
+                    minute < TEN_MINUTES -> {
                         binding.txtTime.text = "0" + "$minute:$seconds"
                     }
-                    seconds < 10 -> {
+                    seconds < TEN_SECОNDS -> {
                         binding.txtTime.text = "$minute:" + "0" + "$seconds"
                     }
                     else -> {
@@ -83,10 +85,7 @@ class TestScreenFragment : Fragment(), TestItemListener {
             }
 
             override fun onFinish() {
-                //save score
-                //go to score screen with result
                 openResultLayout()
-                Toast.makeText(requireContext(), "Cancel", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -145,7 +144,6 @@ class TestScreenFragment : Fragment(), TestItemListener {
     private fun askUserToTakeTest() =
         AlertDialog.Builder(requireContext())
             .setMessage(getString(R.string.are_you_submit))
-            // if the dialog is cancelable
             .setCancelable(false)
             .setPositiveButton(getString(R.string.yes)) { dialog, _ ->
                 openResultLayout()
@@ -166,14 +164,53 @@ class TestScreenFragment : Fragment(), TestItemListener {
         binding.btnSubmitTest.setOnClickListener {
             val points = adapter.getItems().flatMap { it.answers }
                 .filter { it.isSelected && it.isCorrect }.size
-
-//            binding.scoreBoardLayout.txtFinalScore.text =
-//                points.toString() + "/" + args.numberOfQuestions.toString()
-//            Оценка=2+(4*верни отговори)/(брой въпроси)
-            binding.scoreBoardLayout.txtFinalScore.text = (2 + (4 * points) / (args.numberOfQuestions).toFloat()).toString()
+            binding.scoreBoardLayout.txtAssessment.text =
+                calculatedAssessment(points, args.numberOfQuestions)
+            binding.scoreBoardLayout.txtFinalScore.text =
+                getString(R.string.score, points.toString(), args.numberOfQuestions.toString())
             askUserToTakeTest()
             adapter.isButtonTakeClicked(true)
         }
+    }
+
+    private fun calculatedAssessment(correctAnswers: Int, allQuestions: Int): String {
+        val assessment = 2 + ((4 * correctAnswers) / (allQuestions).toFloat())
+        return addedPrefixToCalculatedAssessment(assessment) + assessment.toString()
+    }
+
+    private fun addedPrefixToCalculatedAssessment(assessment: Float): String {
+        when {
+            assessment >= 3.0 && assessment < 3.5 -> {
+                showFailureImage()
+                return getString(R.string.average)
+            }
+            assessment >= 3.5 -> {
+                showSuccessImage()
+                return getString(R.string.well)
+            }
+            assessment >= 4.5 -> {
+                showSuccessImage()
+                return getString(R.string.well_done)
+            }
+            assessment >= 5.5 -> {
+                showSuccessImage()
+                return getString(R.string.exellent)
+            }
+            else -> {
+                showFailureImage()
+                return getString(R.string.low)
+            }
+        }
+    }
+
+    private fun showSuccessImage() {
+        binding.scoreBoardLayout.imgSuccess.visibility = View.VISIBLE
+        binding.scoreBoardLayout.imgFail.visibility = View.GONE
+    }
+
+    private fun showFailureImage() {
+        binding.scoreBoardLayout.imgSuccess.visibility = View.GONE
+        binding.scoreBoardLayout.imgFail.visibility = View.VISIBLE
     }
 
     private fun onButtonCheckClicked() =
