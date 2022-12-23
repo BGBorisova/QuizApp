@@ -13,6 +13,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quizapp.R
 import com.example.quizapp.data.QuestionGenerator
+import com.example.quizapp.data.local.AppSharedPreferences
 import com.example.quizapp.databinding.FragmentTestScreenBinding
 import com.example.quizapp.ui.activity.adapter.TestAdapter
 import com.example.quizapp.ui.activity.adapter.TestItemListener
@@ -24,6 +25,7 @@ private const val TEN_SECОNDS = 10
 class TestScreenFragment : Fragment(), TestItemListener {
 
     private lateinit var binding: FragmentTestScreenBinding
+    private lateinit var appSharedPreferences: AppSharedPreferences
     private val args: TestScreenFragmentArgs by navArgs()
     private var adapter = TestAdapter(this)
     private lateinit var timer: CountDownTimer
@@ -42,6 +44,11 @@ class TestScreenFragment : Fragment(), TestItemListener {
         onButtonCheckClicked()
         onButtonExitClicked()
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        appSharedPreferences = AppSharedPreferences.getInstance(requireContext())
     }
 
     override fun onStart() {
@@ -164,14 +171,28 @@ class TestScreenFragment : Fragment(), TestItemListener {
         binding.btnSubmitTest.setOnClickListener {
             val points = adapter.getItems().flatMap { it.answers }
                 .filter { it.isSelected && it.isCorrect }.size
+
+//            saveProgress(points)
+
             binding.scoreBoardLayout.txtAssessment.text =
                 calculatedAssessment(points, args.numberOfQuestions)
             binding.scoreBoardLayout.txtFinalScore.text =
                 getString(R.string.score, points.toString(), args.numberOfQuestions.toString())
+
+//            val lastResult = appSharedPreferences.getLastResult()
+
+            binding.scoreBoardLayout.txtPreviousResult.text = "Най-добър резултат: "
+
             askUserToTakeTest()
             adapter.isButtonTakeClicked(true)
         }
     }
+
+//    private fun saveProgress(currentPoints: Int) {
+//        if (currentPoints > appSharedPreferences.getLastResult()) {
+//            appSharedPreferences.saveResult(currentPoints)
+//        }
+//    }
 
     private fun calculatedAssessment(correctAnswers: Int, allQuestions: Int): String {
         val assessment = 2 + ((4 * correctAnswers) / (allQuestions).toFloat())
