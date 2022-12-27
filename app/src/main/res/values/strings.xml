@@ -39,5 +39,7 @@
     <string name="test_result">Резултат от теста.</string>
     <string name="score">%s/%s</string>
     <string name="txt_points">Точки</string>
+    <string name="there_is_no_result">Няма предишен резултат</string>
+    <string name="the_best_result">Най-добър резултат: %s"</string>
 
 </resources>

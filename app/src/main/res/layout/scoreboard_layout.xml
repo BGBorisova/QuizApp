@@ -92,7 +92,7 @@
             android:layout_marginTop="@dimen/margin_medium"
             android:layout_marginEnd="@dimen/margin_medium"
             android:fontFamily="@font/dm_sans_regular"
-            android:text="Подобрихте стария старият си резултат"
+            android:text="@string/there_is_no_result"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_question"
             app:layout_constraintEnd_toEndOf="parent"

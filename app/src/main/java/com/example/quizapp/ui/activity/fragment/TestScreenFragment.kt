@@ -18,9 +18,10 @@ import com.example.quizapp.databinding.FragmentTestScreenBinding
 import com.example.quizapp.ui.activity.adapter.TestAdapter
 import com.example.quizapp.ui.activity.adapter.TestItemListener
 
+
 private const val ONE_MINUTE_IN_MILLIS = 60000
 private const val TEN_MINUTES = 10
-private const val TEN_SECОNDS = 10
+private const val TEN_SECONDS = 10
 
 class TestScreenFragment : Fragment(), TestItemListener {
 
@@ -76,13 +77,13 @@ class TestScreenFragment : Fragment(), TestItemListener {
                     )
                 }
                 when {
-                    minute < TEN_MINUTES && seconds < TEN_SECОNDS -> {
+                    minute < TEN_MINUTES && seconds < TEN_SECONDS -> {
                         binding.txtTime.text = "0" + "$minute:" + "0" + "$seconds"
                     }
                     minute < TEN_MINUTES -> {
                         binding.txtTime.text = "0" + "$minute:$seconds"
                     }
-                    seconds < TEN_SECОNDS -> {
+                    seconds < TEN_SECONDS -> {
                         binding.txtTime.text = "$minute:" + "0" + "$seconds"
                     }
                     else -> {
@@ -101,15 +102,13 @@ class TestScreenFragment : Fragment(), TestItemListener {
         when (args.testId) {
             1 -> {
                 adapter.setItems(
-                    QuestionGenerator().getFirstModuleQuestions()
-                        .shuffled()
+                    QuestionGenerator().getFirstModuleQuestions().shuffled()
                         .takeLast(args.numberOfQuestions)
                 )
             }
             2 -> {
                 adapter.setItems(
-                    QuestionGenerator().getSecondModuleQuestions()
-                        .shuffled()
+                    QuestionGenerator().getSecondModuleQuestions().shuffled()
                         .takeLast(args.numberOfQuestions)
                 )
             }
@@ -167,37 +166,94 @@ class TestScreenFragment : Fragment(), TestItemListener {
         binding.scoreViews.visibility = View.VISIBLE
     }
 
-    private fun onButtonTakeClicked() {
+    private fun onButtonTakeClicked() =
         binding.btnSubmitTest.setOnClickListener {
             val points = adapter.getItems().flatMap { it.answers }
                 .filter { it.isSelected && it.isCorrect }.size
-
-//            saveProgress(points)
-
+            saveProgress(calculatedAssessment(points, args.numberOfQuestions))
             binding.scoreBoardLayout.txtAssessment.text =
-                calculatedAssessment(points, args.numberOfQuestions)
+                calculatedAssessmentWithPrefix(points, args.numberOfQuestions)
             binding.scoreBoardLayout.txtFinalScore.text =
                 getString(R.string.score, points.toString(), args.numberOfQuestions.toString())
-
-//            val lastResult = appSharedPreferences.getLastResult()
-
-            binding.scoreBoardLayout.txtPreviousResult.text = "Най-добър резултат: "
-
+            binding.scoreBoardLayout.txtPreviousResult.text =
+                getString(R.string.the_best_result, getResultOfChosenModule())
             askUserToTakeTest()
             adapter.isButtonTakeClicked(true)
         }
+
+    private fun getResultOfChosenModule(): String {
+        return when (args.testId) {
+            1 -> appSharedPreferences.getLastAssessmentModule1().toString()
+            2 -> appSharedPreferences.getLastAssessmentModule2().toString()
+            3 -> appSharedPreferences.getLastAssessmentModule3().toString()
+            4 -> appSharedPreferences.getLastAssessmentModule4().toString()
+            5 -> appSharedPreferences.getLastAssessmentModule5().toString()
+            6 -> appSharedPreferences.getLastAssessmentModule6().toString()
+            else -> appSharedPreferences.getLastAssessmentModule1().toString()
+        }
     }
 
-//    private fun saveProgress(currentPoints: Int) {
-//        if (currentPoints > appSharedPreferences.getLastResult()) {
-//            appSharedPreferences.saveResult(currentPoints)
-//        }
-//    }
-
-    private fun calculatedAssessment(correctAnswers: Int, allQuestions: Int): String {
-        val assessment = 2 + ((4 * correctAnswers) / (allQuestions).toFloat())
-        return addedPrefixToCalculatedAssessment(assessment) + assessment.toString()
+    private fun saveProgress(assessment: Float) {
+        when (args.testId) {
+            1 -> {
+                if (isThereProgress(
+                        appSharedPreferences.getLastAssessmentModule1(),
+                        assessment
+                    )
+                ) appSharedPreferences.saveAssessmentModule1(assessment)
+            }
+            2 -> {
+                if (isThereProgress(
+                        appSharedPreferences.getLastAssessmentModule2(),
+                        assessment
+                    )
+                ) appSharedPreferences.saveAssessmentModule2(assessment)
+            }
+            3 -> {
+                if (isThereProgress(
+                        appSharedPreferences.getLastAssessmentModule3(),
+                        assessment
+                    )
+                ) appSharedPreferences.saveAssessmentModule3(assessment)
+            }
+            4 -> {
+                if (isThereProgress(
+                        appSharedPreferences.getLastAssessmentModule4(),
+                        assessment
+                    )
+                ) appSharedPreferences.saveAssessmentModule4(assessment)
+            }
+            5 -> {
+                if (isThereProgress(
+                        appSharedPreferences.getLastAssessmentModule5(),
+                        assessment
+                    )
+                ) appSharedPreferences.saveAssessmentModule5(assessment)
+            }
+            6 -> {
+                if (isThereProgress(
+                        appSharedPreferences.getLastAssessmentModule6(),
+                        assessment
+                    )
+                ) appSharedPreferences.saveAssessmentModule6(assessment)
+            }
+        }
     }
+
+    private fun isThereProgress(bestAssessment: Float, currentAssessment: Float) =
+        currentAssessment > bestAssessment
+
+    private fun calculatedAssessment(correctAnswers: Int, allQuestions: Int) =
+        String.format("%.02f".format(2 + ((4 * correctAnswers) / (allQuestions).toFloat())))
+            .toFloat()
+
+    private fun calculatedAssessmentWithPrefix(correctAnswers: Int, allQuestions: Int) =
+        addedPrefixToCalculatedAssessment(
+            calculatedAssessment(
+                correctAnswers,
+                allQuestions
+            )
+        ) + calculatedAssessment(correctAnswers, allQuestions).toString()
 
     private fun addedPrefixToCalculatedAssessment(assessment: Float): String {
         when {
