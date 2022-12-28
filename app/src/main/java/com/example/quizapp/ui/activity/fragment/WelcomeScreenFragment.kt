@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.quizapp.R
 import com.example.quizapp.databinding.FragmentWelcomeScreenBinding
 
-private const val MAX_ANIM_FRAME = 100
+private const val MAX_ANIMATION_FRAMES = 100
 
 class WelcomeScreenFragment : Fragment() {
 
@@ -30,7 +30,7 @@ class WelcomeScreenFragment : Fragment() {
     }
 
     private fun setLottieAnimation() {
-        binding.lottie.setMaxFrame(MAX_ANIM_FRAME)
+        binding.lottie.setMaxFrame(MAX_ANIMATION_FRAMES)
         binding.lottie.addAnimatorListener(object : Animator.AnimatorListener {
             override fun onAnimationStart(p0: Animator?) {
             }

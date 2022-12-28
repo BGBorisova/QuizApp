@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.quizapp.R
 import com.example.quizapp.data.Module
 import com.example.quizapp.databinding.FragmentModuleScreenBinding
 import com.example.quizapp.ui.activity.adapter.ItemListener
@@ -31,12 +32,12 @@ class ModuleScreenFragment : Fragment(), ItemListener {
 
     private fun getItems() =
         listOf(
-            Module(moduleId = 1, "Основи на информатиката."),
-            Module(moduleId = 2, "Среда за визуално програмиране."),
-            Module(moduleId = 3, "Основни типове данни. Аритметични операции. Вградени функции."),
-            Module(moduleId = 4, "Програмни конструкции за реализиране на разклонен алгоротъм."),
-            Module(moduleId = 5, "Програмни конструкции за реализиране на циклични алгоротми."),
-            Module(moduleId = 6, "Съставни типове данни. Едномерен масив."),
+            Module(moduleId = 1, getString(R.string.module_1_name)),
+            Module(moduleId = 2, getString(R.string.module_2_name)),
+            Module(moduleId = 3, getString(R.string.module_3_name)),
+            Module(moduleId = 4, getString(R.string.module_4_name)),
+            Module(moduleId = 5, getString(R.string.module_5_name)),
+            Module(moduleId = 6, getString(R.string.module_6_name)),
         )
 
     override fun onItemSelected(item: Module) {

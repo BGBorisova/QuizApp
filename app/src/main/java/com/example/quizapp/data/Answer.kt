@@ -4,5 +4,5 @@ data class Answer(
     val id: Int,
     val text: String,
     val isCorrect: Boolean,
-    var isSelected:Boolean=false
+    var isSelected: Boolean = false
 )

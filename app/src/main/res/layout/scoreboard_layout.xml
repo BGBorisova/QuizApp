@@ -59,6 +59,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imgHolder" />
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgShare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_large"
+            android:src="@drawable/ic_share"
+            android:padding="@dimen/margin_medium"
+            app:layout_constraintBottom_toBottomOf="@id/txtAssessment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/txtAssessment"
+            app:layout_constraintTop_toTopOf="@id/txtAssessment" />
+
         <TextView
             android:id="@+id/txtPoints"
             android:layout_width="wrap_content"

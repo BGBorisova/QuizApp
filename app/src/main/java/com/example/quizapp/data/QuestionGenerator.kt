@@ -185,7 +185,7 @@ class QuestionGenerator {
                 Answer(4, "63", false)
             )
         ),
-        //fix it
+       
         Question(
             id = 1,
             "При преобразуване на числа от осмична в двоична БС всяка цифра от осмичната БС (без първата) се представя в три позиции. Кое твърдение е вярно?",
@@ -205,9 +205,8 @@ class QuestionGenerator {
                     4, "Ако цифрата в осмична БС е по-голяма от 1, не се добавят водещи нули", false
                 )
             )
-        ),
-
         )
+    )
 
     fun getSecondModuleQuestions() = listOf(
         Question(

@@ -73,50 +73,42 @@ class TestAdapter(
         }
 
         private fun toggleAnswers(answers: List<Answer>) {
-            if (answers[FIRST_ANSWER].isSelected) {
-                binding.txtAnswer1.background = ContextCompat.getDrawable(
+            if (answers[FIRST_ANSWER].isSelected) binding.txtAnswer1.background =
+                ContextCompat.getDrawable(
                     binding.root.context,
                     R.drawable.background_selected_answer
                 )
-            } else {
-                binding.txtAnswer1.background = ContextCompat.getDrawable(
-                    binding.root.context,
-                    R.drawable.background_unselected_answer
-                )
-            }
-            if (answers[SECOND_ANSWER].isSelected) {
-                binding.txtAnswer2.background = ContextCompat.getDrawable(
+            else binding.txtAnswer1.background = ContextCompat.getDrawable(
+                binding.root.context,
+                R.drawable.background_unselected_answer
+            )
+            if (answers[SECOND_ANSWER].isSelected) binding.txtAnswer2.background =
+                ContextCompat.getDrawable(
                     binding.root.context,
                     R.drawable.background_selected_answer
                 )
-            } else {
-                binding.txtAnswer2.background = ContextCompat.getDrawable(
-                    binding.root.context,
-                    R.drawable.background_unselected_answer
-                )
-            }
-            if (answers[THIRD_ANSWER].isSelected) {
-                binding.txtAnswer3.background = ContextCompat.getDrawable(
+            else binding.txtAnswer2.background = ContextCompat.getDrawable(
+                binding.root.context,
+                R.drawable.background_unselected_answer
+            )
+            if (answers[THIRD_ANSWER].isSelected) binding.txtAnswer3.background =
+                ContextCompat.getDrawable(
                     binding.root.context,
                     R.drawable.background_selected_answer
                 )
-            } else {
-                binding.txtAnswer3.background = ContextCompat.getDrawable(
-                    binding.root.context,
-                    R.drawable.background_unselected_answer
-                )
-            }
-            if (answers[FORTH_ANSWER].isSelected) {
-                binding.txtAnswer4.background = ContextCompat.getDrawable(
+            else binding.txtAnswer3.background = ContextCompat.getDrawable(
+                binding.root.context,
+                R.drawable.background_unselected_answer
+            )
+            if (answers[FORTH_ANSWER].isSelected) binding.txtAnswer4.background =
+                ContextCompat.getDrawable(
                     binding.root.context,
                     R.drawable.background_selected_answer
                 )
-            } else {
-                binding.txtAnswer4.background = ContextCompat.getDrawable(
-                    binding.root.context,
-                    R.drawable.background_unselected_answer
-                )
-            }
+            else binding.txtAnswer4.background = ContextCompat.getDrawable(
+                binding.root.context,
+                R.drawable.background_unselected_answer
+            )
         }
 
         private fun setAnswersClickListeners(answers: List<Answer>) {

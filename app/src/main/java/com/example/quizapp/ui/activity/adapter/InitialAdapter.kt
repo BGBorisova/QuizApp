@@ -7,16 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.quizapp.data.InitialView
 import com.example.quizapp.databinding.InitialScreenItemBinding
 
-private const val FIRST_STEP = 0
-private const val SECOND_STEP = 1
-private const val THIRD_STEP = 2
-private const val IMAGE_PADDING_ON_SECOND_STEP = -40
-
 class InitialAdapter : RecyclerView.Adapter<InitialAdapter.InitialViewHolder>() {
 
     lateinit var binding: InitialScreenItemBinding
-    var descriptions = arrayListOf<InitialView>()
-
+    private var descriptions = arrayListOf<InitialView>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InitialViewHolder {
         binding =
@@ -32,11 +26,9 @@ class InitialAdapter : RecyclerView.Adapter<InitialAdapter.InitialViewHolder>() 
     override fun getItemCount(): Int = descriptions.size
 
     fun setItems(initialViews: List<InitialView>) {
-        if (initialViews != null) {
-            descriptions.clear()
-            descriptions.addAll(initialViews)
-            notifyDataSetChanged()
-        }
+        descriptions.clear()
+        descriptions.addAll(initialViews)
+        notifyDataSetChanged()
     }
 
     class InitialViewHolder(

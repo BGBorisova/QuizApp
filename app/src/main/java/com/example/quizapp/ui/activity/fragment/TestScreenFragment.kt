@@ -1,6 +1,7 @@
 package com.example.quizapp.ui.activity.fragment
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.quizapp.Constants
 import com.example.quizapp.R
 import com.example.quizapp.data.QuestionGenerator
 import com.example.quizapp.data.local.AppSharedPreferences
@@ -27,11 +29,13 @@ class TestScreenFragment : Fragment(), TestItemListener {
 
     private lateinit var binding: FragmentTestScreenBinding
     private lateinit var appSharedPreferences: AppSharedPreferences
+    private lateinit var timer: CountDownTimer
     private val args: TestScreenFragmentArgs by navArgs()
     private var adapter = TestAdapter(this)
-    private lateinit var timer: CountDownTimer
     private var timeInMills = 0L
-    var isColorized = false
+    private var isColorized = false
+    private var assessment: String = Constants.EMPTY_STRING
+    private var moduleName: String = Constants.EMPTY_STRING
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -50,6 +54,7 @@ class TestScreenFragment : Fragment(), TestItemListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         appSharedPreferences = AppSharedPreferences.getInstance(requireContext())
+        onButtonShareClicked()
     }
 
     override fun onStart() {
@@ -105,36 +110,42 @@ class TestScreenFragment : Fragment(), TestItemListener {
                     QuestionGenerator().getFirstModuleQuestions().shuffled()
                         .takeLast(args.numberOfQuestions)
                 )
+                moduleName = getString(R.string.module_1_name)
             }
             2 -> {
                 adapter.setItems(
                     QuestionGenerator().getSecondModuleQuestions().shuffled()
                         .takeLast(args.numberOfQuestions)
                 )
+                moduleName = getString(R.string.module_2_name)
             }
             3 -> {
                 adapter.setItems(
                     QuestionGenerator().getThirdModuleQuestions().shuffled()
                         .takeLast(args.numberOfQuestions)
                 )
+                moduleName = getString(R.string.module_3_name)
             }
             4 -> {
                 adapter.setItems(
                     QuestionGenerator().getFourthModuleQuestions().shuffled()
                         .takeLast(args.numberOfQuestions)
                 )
+                moduleName = getString(R.string.module_5_name)
             }
             5 -> {
                 adapter.setItems(
                     QuestionGenerator().getFifthModuleQuestions().shuffled()
                         .takeLast(args.numberOfQuestions)
                 )
+                moduleName = getString(R.string.module_5_name)
             }
             6 -> {
                 adapter.setItems(
                     QuestionGenerator().getSixthModuleQuestions().shuffled()
                         .takeLast(args.numberOfQuestions)
                 )
+                moduleName = getString(R.string.module_6_name)
             }
             else -> {
                 adapter.setItems(
@@ -171,8 +182,8 @@ class TestScreenFragment : Fragment(), TestItemListener {
             val points = adapter.getItems().flatMap { it.answers }
                 .filter { it.isSelected && it.isCorrect }.size
             saveProgress(calculatedAssessment(points, args.numberOfQuestions))
-            binding.scoreBoardLayout.txtAssessment.text =
-                calculatedAssessmentWithPrefix(points, args.numberOfQuestions)
+            assessment = calculatedAssessmentWithPrefix(points, args.numberOfQuestions)
+            binding.scoreBoardLayout.txtAssessment.text = assessment
             binding.scoreBoardLayout.txtFinalScore.text =
                 getString(R.string.score, points.toString(), args.numberOfQuestions.toString())
             binding.scoreBoardLayout.txtPreviousResult.text =
@@ -305,4 +316,21 @@ class TestScreenFragment : Fragment(), TestItemListener {
                 TestScreenFragmentDirections.actionTestScreenFragmentToModuleScreenFragment()
             )
         }
+
+    private fun onButtonShareClicked() =
+        binding.scoreBoardLayout.imgShare.setOnClickListener {
+            shareAssessment()
+        }
+
+    private fun shareAssessment() {
+        val sendIntent = Intent()
+        sendIntent.action = Intent.ACTION_SEND
+        sendIntent.putExtra(
+            Intent.EXTRA_TEXT,
+            "$moduleName оценка: $assessment"
+        )
+        sendIntent.type = "text/plain"
+        val shareIntent = Intent.createChooser(sendIntent, null)
+        startActivity(shareIntent)
+    }
 }
