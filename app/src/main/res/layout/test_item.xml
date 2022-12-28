@@ -39,7 +39,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/margin_small"
                     android:layout_marginTop="@dimen/margin_medium"
-                    android:background="@drawable/background_answer"
+                    android:background="@drawable/background_unselected_answer"
                     android:fontFamily="@font/dm_sans_regular"
                     android:padding="@dimen/margin_medium"
                     android:textAlignment="textStart"
@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/margin_small"
                     android:layout_marginTop="@dimen/margin_medium"
-                    android:background="@drawable/background_answer"
+                    android:background="@drawable/background_unselected_answer"
                     android:fontFamily="@font/dm_sans_regular"
                     android:padding="@dimen/margin_medium"
                     android:textAlignment="textStart"
@@ -71,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/margin_small"
                     android:layout_marginTop="@dimen/margin_medium"
-                    android:background="@drawable/background_answer"
+                    android:background="@drawable/background_unselected_answer"
                     android:fontFamily="@font/dm_sans_regular"
                     android:padding="@dimen/margin_medium"
                     android:textAlignment="textStart"
@@ -88,7 +88,7 @@
                     android:layout_marginHorizontal="@dimen/margin_small"
                     android:layout_marginTop="@dimen/margin_medium"
                     android:layout_marginBottom="@dimen/margin_giant"
-                    android:background="@drawable/background_answer"
+                    android:background="@drawable/background_unselected_answer"
                     android:fontFamily="@font/dm_sans_regular"
                     android:padding="@dimen/margin_medium"
                     android:textAlignment="textStart"
@@ -97,6 +97,16 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtAnswer3" />
+
+                <View
+                    android:id="@+id/disableLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/no_dimen"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/txtAnswer4"
+                    app:layout_constraintTop_toTopOf="@id/txtAnswer1" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>
