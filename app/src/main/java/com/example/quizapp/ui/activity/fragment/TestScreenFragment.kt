@@ -19,11 +19,14 @@ import com.example.quizapp.data.local.AppSharedPreferences
 import com.example.quizapp.databinding.FragmentTestScreenBinding
 import com.example.quizapp.ui.activity.adapter.TestAdapter
 import com.example.quizapp.ui.activity.adapter.TestItemListener
+import java.math.RoundingMode
+import java.text.DecimalFormat
 
 
 private const val ONE_MINUTE_IN_MILLIS = 60000
 private const val TEN_MINUTES = 10
 private const val TEN_SECONDS = 10
+private const val DECIMAL_FORMAT_PATTERN = "#.##"
 
 class TestScreenFragment : Fragment(), TestItemListener {
 
@@ -181,7 +184,7 @@ class TestScreenFragment : Fragment(), TestItemListener {
         binding.btnSubmitTest.setOnClickListener {
             val points = adapter.getItems().flatMap { it.answers }
                 .filter { it.isSelected && it.isCorrect }.size
-            saveProgress(calculatedAssessment(points, args.numberOfQuestions))
+            saveProgress(getCalculatedAssessment(points, args.numberOfQuestions))
             assessment = calculatedAssessmentWithPrefix(points, args.numberOfQuestions)
             binding.scoreBoardLayout.txtAssessment.text = assessment
             binding.scoreBoardLayout.txtFinalScore.text =
@@ -254,17 +257,20 @@ class TestScreenFragment : Fragment(), TestItemListener {
     private fun isThereProgress(bestAssessment: Float, currentAssessment: Float) =
         currentAssessment > bestAssessment
 
-    private fun calculatedAssessment(correctAnswers: Int, allQuestions: Int) =
-        String.format("%.02f".format(2 + ((4 * correctAnswers) / (allQuestions).toFloat())))
-            .toFloat()
+    private fun getCalculatedAssessment(correctAnswers: Int, allQuestions: Int): Float {
+        val calculatedAssessment = 2 + (4 * correctAnswers) / (allQuestions).toFloat()
+        val decimalFormat = DecimalFormat(DECIMAL_FORMAT_PATTERN)
+        decimalFormat.roundingMode = RoundingMode.FLOOR
+        return decimalFormat.format(calculatedAssessment).toFloat()
+    }
 
     private fun calculatedAssessmentWithPrefix(correctAnswers: Int, allQuestions: Int) =
         addedPrefixToCalculatedAssessment(
-            calculatedAssessment(
+            getCalculatedAssessment(
                 correctAnswers,
                 allQuestions
             )
-        ) + calculatedAssessment(correctAnswers, allQuestions).toString()
+        ) + getCalculatedAssessment(correctAnswers, allQuestions).toString()
 
     private fun addedPrefixToCalculatedAssessment(assessment: Float): String {
         when {
