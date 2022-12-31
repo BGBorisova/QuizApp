@@ -48,7 +48,7 @@ class TestScreenFragment : Fragment(), TestItemListener {
         binding.recyclerView.adapter = adapter
         setCountdownTimer()
         openChosenTest()
-        onButtonTakeClicked()
+        onButtonSubmitClicked()
         onButtonCheckClicked()
         onButtonExitClicked()
         return binding.root
@@ -161,7 +161,7 @@ class TestScreenFragment : Fragment(), TestItemListener {
 
     override fun isReadyToColorizedAnswers() = isColorized
 
-    private fun askUserToTakeTest() =
+    private fun askUserToSubmitTest() =
         AlertDialog.Builder(requireContext())
             .setMessage(getString(R.string.are_you_submit))
             .setCancelable(false)
@@ -178,22 +178,27 @@ class TestScreenFragment : Fragment(), TestItemListener {
         binding.txtTime.visibility = View.GONE
         binding.testViewsParent.visibility = View.GONE
         binding.scoreViews.visibility = View.VISIBLE
+        finishTest()
     }
 
-    private fun onButtonTakeClicked() =
+    private fun onButtonSubmitClicked() =
         binding.btnSubmitTest.setOnClickListener {
-            val points = adapter.getItems().flatMap { it.answers }
-                .filter { it.isSelected && it.isCorrect }.size
-            saveProgress(getCalculatedAssessment(points, args.numberOfQuestions))
-            assessment = calculatedAssessmentWithPrefix(points, args.numberOfQuestions)
-            binding.scoreBoardLayout.txtAssessment.text = assessment
-            binding.scoreBoardLayout.txtFinalScore.text =
-                getString(R.string.score, points.toString(), args.numberOfQuestions.toString())
-            binding.scoreBoardLayout.txtPreviousResult.text =
-                getString(R.string.the_best_result, getResultOfChosenModule())
-            askUserToTakeTest()
+            finishTest()
+            askUserToSubmitTest()
             adapter.isButtonTakeClicked(true)
         }
+
+    private fun finishTest() {
+        val points = adapter.getItems().flatMap { it.answers }
+            .filter { it.isSelected && it.isCorrect }.size
+        saveProgress(getCalculatedAssessment(points, args.numberOfQuestions))
+        assessment = calculatedAssessmentWithPrefix(points, args.numberOfQuestions)
+        binding.scoreBoardLayout.txtAssessment.text = assessment
+        binding.scoreBoardLayout.txtFinalScore.text =
+            getString(R.string.score, points.toString(), args.numberOfQuestions.toString())
+        binding.scoreBoardLayout.txtPreviousResult.text =
+            getString(R.string.the_best_result, getResultOfChosenModule())
+    }
 
     private fun getResultOfChosenModule(): String {
         return when (args.testId) {
@@ -278,11 +283,11 @@ class TestScreenFragment : Fragment(), TestItemListener {
                 showFailureImage()
                 return getString(R.string.average)
             }
-            assessment >= 3.5 -> {
+            assessment >= 3.5 && assessment < 4.5 -> {
                 showSuccessImage()
                 return getString(R.string.well)
             }
-            assessment >= 4.5 -> {
+            assessment >= 4.5 && assessment < 5.5 -> {
                 showSuccessImage()
                 return getString(R.string.well_done)
             }
