@@ -1,4 +1,4 @@
-package com.example.quizapp.data
+package com.example.quizapp.data.model
 
 data class Module(
     val moduleId: Int,

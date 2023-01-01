@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quizapp.R
-import com.example.quizapp.data.Answer
-import com.example.quizapp.data.Question
+import com.example.quizapp.data.model.Answer
+import com.example.quizapp.data.model.Question
 import com.example.quizapp.databinding.TestItemBinding
 
 private const val FIRST_ANSWER = 0

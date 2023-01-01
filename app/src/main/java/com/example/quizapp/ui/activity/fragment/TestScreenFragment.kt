@@ -12,9 +12,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.quizapp.Constants
 import com.example.quizapp.R
-import com.example.quizapp.data.QuestionGenerator
+import com.example.quizapp.data.model.QuestionGenerator
 import com.example.quizapp.data.local.AppSharedPreferences
 import com.example.quizapp.databinding.FragmentTestScreenBinding
 import com.example.quizapp.ui.activity.adapter.TestAdapter
@@ -27,6 +26,7 @@ private const val ONE_MINUTE_IN_MILLIS = 60000
 private const val TEN_MINUTES = 10
 private const val TEN_SECONDS = 10
 private const val DECIMAL_FORMAT_PATTERN = "#.##"
+private const val EMPTY_STRING = ""
 
 class TestScreenFragment : Fragment(), TestItemListener {
 
@@ -37,8 +37,8 @@ class TestScreenFragment : Fragment(), TestItemListener {
     private var adapter = TestAdapter(this)
     private var timeInMills = 0L
     private var isColorized = false
-    private var assessment: String = Constants.EMPTY_STRING
-    private var moduleName: String = Constants.EMPTY_STRING
+    private var assessment: String = EMPTY_STRING
+    private var moduleName: String = EMPTY_STRING
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?

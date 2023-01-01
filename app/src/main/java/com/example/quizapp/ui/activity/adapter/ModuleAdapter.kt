@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quizapp.R
-import com.example.quizapp.data.Module
+import com.example.quizapp.data.model.Module
 import com.example.quizapp.databinding.ModuleItemBinding
 
 
