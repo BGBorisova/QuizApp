@@ -7,12 +7,9 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="text_welcome">Добре дошъл в</string>
     <string name="text_description">Теставай знанията си по Информатика с няколко клика!</string>
     <string name="eight_class">8 клас</string>
-    <string name="ninth_class">9 клас</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="initial_text_1">Добре дошъл в Test IT.</string>
     <string name="initial_text_2">Тествай знанията си \n по Информатика за 8 клас.</string>
