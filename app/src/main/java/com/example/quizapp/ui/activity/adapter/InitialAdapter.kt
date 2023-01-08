@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.quizapp.data.InitialView
+import com.example.quizapp.data.model.InitialView
 import com.example.quizapp.databinding.InitialScreenItemBinding
 
 class InitialAdapter : RecyclerView.Adapter<InitialAdapter.InitialViewHolder>() {

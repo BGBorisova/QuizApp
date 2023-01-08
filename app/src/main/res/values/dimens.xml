@@ -11,4 +11,5 @@
     <dimen name="text_size_header">32sp</dimen>
 
     <item name="alpha_percentage" format="float" type="integer">0.85</item>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

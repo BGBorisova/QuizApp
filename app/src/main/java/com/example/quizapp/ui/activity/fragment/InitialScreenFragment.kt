@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.quizapp.R
-import com.example.quizapp.data.InitialView
+import com.example.quizapp.data.model.InitialView
 import com.example.quizapp.databinding.FragmentInitialScreenBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import org.relaxifyapp.me.adapters.initial.InitialAdapter

@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quizapp.R
-import com.example.quizapp.data.Module
+import com.example.quizapp.data.model.Module
 import com.example.quizapp.databinding.FragmentModuleScreenBinding
 import com.example.quizapp.ui.activity.adapter.ItemListener
 import com.example.quizapp.ui.activity.adapter.ModuleAdapter

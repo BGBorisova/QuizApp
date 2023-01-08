@@ -36,7 +36,7 @@ class WelcomeScreenFragment : Fragment() {
             }
 
             override fun onAnimationEnd(p0: Animator?) {
-                findNavController().navigate(R.id.action_WelcomeScreenFragment_to_MainScreenFragment)
+                findNavController().navigate(R.id.action_welcomeScreenFragment_to_initialScreenFragment)
             }
 
             override fun onAnimationCancel(p0: Animator?) {}
