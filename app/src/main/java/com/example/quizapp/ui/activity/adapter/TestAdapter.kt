@@ -54,14 +54,20 @@ class TestAdapter(
     ) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(question: Question) {
-            binding.txtQuestion.text = (adapterPosition + 1).toString() + ". " + question.question
-            binding.txtAnswer1.text = question.answers[FIRST_ANSWER].text
-            binding.txtAnswer2.text = question.answers[SECOND_ANSWER].text
-            binding.txtAnswer3.text = question.answers[THIRD_ANSWER].text
-            binding.txtAnswer4.text = question.answers[FORTH_ANSWER].text
 
             val answers = question.answers
+            binding.txtQuestion.text = binding.root.context.resources.getString(
+                R.string.question_text,
+                (adapterPosition + 1).toString(),
+                question.question
+            )
+            binding.txtAnswer1.text = answers[FIRST_ANSWER].text
+            binding.txtAnswer2.text = answers[SECOND_ANSWER].text
+            binding.txtAnswer3.text = answers[THIRD_ANSWER].text
+            binding.txtAnswer4.text = answers[FORTH_ANSWER].text
+
             toggleAnswers(answers)
+
             if (testItemListener.isReadyToColorizedAnswers()) {
                 setFirstAnswerBackgroundAfterSubmit(answers)
                 setSecondAnswerBackgroundAfterSubmit(answers)
