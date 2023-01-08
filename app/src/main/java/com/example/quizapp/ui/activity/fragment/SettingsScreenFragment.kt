@@ -12,6 +12,7 @@ import com.example.quizapp.databinding.FragmentSettingsScreenBinding
 import kotlin.properties.Delegates
 
 private const val DEFAULT_NUMBER_OF_QUESTIONS = 10
+private const val DEFAULT_TIME_IN_MIN = 10
 private const val FIFTEEN_QUESTIONS = 15
 private const val TWENTY_QUESTIONS = 20
 private const val MIN_VALUE_OF_PICKER = 10
@@ -22,9 +23,8 @@ class SettingsScreenFragment : Fragment() {
     private lateinit var binding: FragmentSettingsScreenBinding
     private val args: SettingsScreenFragmentArgs by navArgs()
     private var testId by Delegates.notNull<Int>()
-    private var testTime = 10
+    private var testTime = DEFAULT_TIME_IN_MIN
     private var numberOfQuestions = DEFAULT_NUMBER_OF_QUESTIONS
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?

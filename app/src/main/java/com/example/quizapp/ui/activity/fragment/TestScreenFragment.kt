@@ -13,8 +13,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quizapp.R
-import com.example.quizapp.data.model.QuestionGenerator
 import com.example.quizapp.data.local.AppSharedPreferences
+import com.example.quizapp.data.model.QuestionGenerator
 import com.example.quizapp.databinding.FragmentTestScreenBinding
 import com.example.quizapp.ui.activity.adapter.TestAdapter
 import com.example.quizapp.ui.activity.adapter.TestItemListener
@@ -46,7 +46,6 @@ class TestScreenFragment : Fragment(), TestItemListener {
         binding = FragmentTestScreenBinding.inflate(inflater, container, false)
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.adapter = adapter
-        setCountdownTimer()
         openChosenTest()
         onButtonSubmitClicked()
         onButtonCheckClicked()
@@ -57,6 +56,7 @@ class TestScreenFragment : Fragment(), TestItemListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         appSharedPreferences = AppSharedPreferences.getInstance(requireContext())
+        setCountdownTimer()
         onButtonShareClicked()
     }
 
@@ -183,7 +183,6 @@ class TestScreenFragment : Fragment(), TestItemListener {
 
     private fun onButtonSubmitClicked() =
         binding.btnSubmitTest.setOnClickListener {
-            finishTest()
             askUserToSubmitTest()
             adapter.isButtonTakeClicked(true)
         }

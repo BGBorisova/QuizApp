@@ -44,5 +44,6 @@
     <string name="module_4_name">Програмни конструкции за реализиране на разклонен алгоротъм.</string>
     <string name="module_5_name">Програмни конструкции за реализиране на циклични алгоротми.</string>
     <string name="module_6_name">Съставни типове данни. Едномерен масив.</string>
+    <string name="question_text">%s.\u0020%s</string>
 
 </resources>
