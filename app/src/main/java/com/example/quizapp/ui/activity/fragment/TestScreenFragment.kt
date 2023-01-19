@@ -23,7 +23,6 @@ import kotlin.math.roundToInt
 private const val ONE_MINUTE_IN_MILLIS = 60000
 private const val TEN_MINUTES = 10
 private const val TEN_SECONDS = 10
-private const val DECIMAL_FORMAT_PATTERN = "#.##"
 private const val EMPTY_STRING = ""
 private const val INTENT_TYPE = "text/plain"
 private const val ASSESSMENT_ROUND_DELIMITER = 100.0f
