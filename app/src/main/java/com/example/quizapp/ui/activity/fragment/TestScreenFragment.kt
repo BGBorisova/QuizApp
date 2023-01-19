@@ -18,15 +18,14 @@ import com.example.quizapp.data.local.AppSharedPreferences
 import com.example.quizapp.databinding.FragmentTestScreenBinding
 import com.example.quizapp.ui.activity.adapter.TestAdapter
 import com.example.quizapp.ui.activity.adapter.TestItemListener
-import java.math.RoundingMode
-import java.text.DecimalFormat
-
+import kotlin.math.roundToInt
 
 private const val ONE_MINUTE_IN_MILLIS = 60000
 private const val TEN_MINUTES = 10
 private const val TEN_SECONDS = 10
-private const val DECIMAL_FORMAT_PATTERN = "#.##"
 private const val EMPTY_STRING = ""
+private const val INTENT_TYPE = "text/plain"
+private const val ASSESSMENT_ROUND_DELIMITER = 100.0f
 
 class TestScreenFragment : Fragment(), TestItemListener {
 
@@ -263,9 +262,7 @@ class TestScreenFragment : Fragment(), TestItemListener {
 
     private fun getCalculatedAssessment(correctAnswers: Int, allQuestions: Int): Float {
         val calculatedAssessment = 2 + (4 * correctAnswers) / (allQuestions).toFloat()
-        val decimalFormat = DecimalFormat(DECIMAL_FORMAT_PATTERN)
-        decimalFormat.roundingMode = RoundingMode.FLOOR
-        return decimalFormat.format(calculatedAssessment).toFloat()
+        return (calculatedAssessment * ASSESSMENT_ROUND_DELIMITER).roundToInt() / ASSESSMENT_ROUND_DELIMITER
     }
 
     private fun calculatedAssessmentWithPrefix(correctAnswers: Int, allQuestions: Int) =
@@ -339,7 +336,7 @@ class TestScreenFragment : Fragment(), TestItemListener {
             Intent.EXTRA_TEXT,
             "$moduleName оценка: $assessment"
         )
-        sendIntent.type = "text/plain"
+        sendIntent.type = INTENT_TYPE
         val shareIntent = Intent.createChooser(sendIntent, null)
         startActivity(shareIntent)
     }
